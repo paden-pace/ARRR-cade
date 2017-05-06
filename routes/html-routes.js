@@ -16,12 +16,12 @@ module.exports = function (app) {
 
   app.get("/simon", function(req, res) {
     res.sendFile(path.join(__dirname + "./../public/html/simon.html"));
+  });
 
   app.get("/", function(req, res){
     res.sendFile(path.join(__dirname + "../public/view.html"))
   })
 
-  });
 
   app.get("/pog/", function(req, res){
     res.sendFile(path.join(__dirname+ "../public/PogPage/index.html"))
