@@ -34,29 +34,36 @@ var rps = {
     compareMoves: function() {
         var player = rps.player.pick;
         var comp = rps.comp.pick;
+        var result;
 
         //1 = rock, 2 = paper, 3 = scissors
 
         //tie
         if (player == comp) {
         	console.log("Draw");
+        	result = "Draw";
         }
         //rock beats scissors
         else if (player == 1 && comp == 3) {
             rps.player.score++;
           	console.log("player win");
+          	result = "You Win";
         } else if (comp == 1 && player == 3) {
         	rps.comp.score++;
         	console.log("comp win");
+        	result = "You Lose";
         }
         //scissors beats paper, paper beats rock
         else if (player > comp) {
             rps.player.score++;
             console.log("player win");
+            result = "You Win";
         } else {
             rps.comp.score++
             console.log("comp win");
+            result = "You Lose";
         }
+        rps.messageUpdate(result);
     },
     //decide if game ends
     endRound: function() {
@@ -67,13 +74,23 @@ var rps = {
             console.log("You win");
             //return win to database
             //return to main page
+            $(".result").html("You win! Game over!");
         } else if (comp == 3) {
             console.log("You lose");
             //display snarky message
             //return to main page
+            $(".result").html("You lose! Game over!");
         } else {
             //next round
         }
+    },
+    messageUpdate: function(result){
+    	var player = rps.player.score;
+        var comp = rps.comp.score;
+
+    	$(".computer-score").html("BIG BAD AI: " + comp);
+    	$(".player-score").html("You: " + player);
+    	$(".result").html(result);
     }
 };
 
