@@ -1,0 +1,21 @@
+.color-btn {
+    height: 100px;
+    width: 100px;
+}
+
+.red-btn{
+    background-color: red;
+}
+.yellow-btn{
+    background-color: gold;
+}
+.green-btn{
+    background-color: green;
+}
+.blue-btn{
+    background-color: blue;
+}
+
+.dimmed{
+    opacity: .5;
+}
