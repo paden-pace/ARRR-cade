@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="/css/view.css"/>
+	<link rel="stylesheet" type="text/css" href="./css/view.css"/>
     <title>Arcade Sequelize App</title>
 </head>
 
 <body>
     <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate" action="/api/players">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
                 <h2>CREATE A PROFILE</h2>
@@ -20,10 +20,10 @@
 
             <div class="container">
                 <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Username" name="uname" class='username' required>
 
                 <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
 
                 <button type="submit" id='createNewPlayer'>Create Profile</button>
                 <input type="checkbox" checked="checked"> Remember me
@@ -70,6 +70,9 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="./js/view.js"></script>
+
+
+    <a class="apiOption" href="./api/players"><p>API Players List</p></a>
 </body>
 
 </html>
