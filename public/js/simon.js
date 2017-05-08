@@ -145,24 +145,6 @@ var unlightBlue = function(){
         $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
     };
 
-    
-    
-    
-    
-
-    var start = function(){
-        var simon = [];
-        var level = 0;
-        console.log("Game started.");
-        // function next(simon, level){
-        //     console.log("Simon says " + simon);
-        //     simonTurn(simon, level);
-        //     console.log("LEVEL: " + level);
-        //     var user = [];
-        //     playerTurn(simon, level);
-        // };
-        next(simon, level);
-    };
  
     var next = function(simon, level){
             console.log("Simon says " + simon);

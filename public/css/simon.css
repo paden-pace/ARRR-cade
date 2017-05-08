@@ -3,19 +3,22 @@
     width: 100px;
 }
 
-.red-btn{
+.red-btn {
     background-color: red;
 }
-.yellow-btn{
+
+.yellow-btn {
     background-color: gold;
 }
-.green-btn{
+
+.green-btn {
     background-color: green;
 }
-.blue-btn{
+
+.blue-btn {
     background-color: blue;
 }
 
-.dimmed{
+.dimmed {
     opacity: .5;
 }
