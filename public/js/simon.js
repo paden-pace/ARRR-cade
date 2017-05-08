@@ -108,7 +108,7 @@ var unlightBlue = function(){
         //for(i=0; i<simon.length; i++){
         var i = 0;
         setInterval(function(){
-
+ 
             if (i<simon.length){
                 //var lightUp = function(i){
                     //console.log("lightUP functioning.")
