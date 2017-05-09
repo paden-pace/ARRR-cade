@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
  var Player = sequelize.define("Player", {
     id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false,
         auto_increment: true,
         primaryKey: true
