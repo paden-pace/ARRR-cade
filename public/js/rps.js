@@ -1,3 +1,7 @@
+//redo RPS actions as objects
+// ex.
+// action: [{image: link, value: RPS}]
+
 var rps = {
     //player stats
     player: {
