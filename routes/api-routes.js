@@ -29,11 +29,16 @@ module.exports = function (app) {
     })
     
     app.post("/api/players", function(req, res){
+        console.log(req.body)
         db.Player.create({
             playerName: req.body.playerName,
             password: req.body.password
         }).then(function(results){
+            console.log(results);
             res.json(results);
+        }).catch(function(error){
+            console.log(error);
+            res.end();
         })
     })
 

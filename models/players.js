@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        auto_increment: true,
+        autoIncrement: true,
         primaryKey: true
     },
    playerName: {
@@ -12,6 +12,13 @@ module.exports = function(sequelize, DataTypes) {
      validate: {
        len: [1, 140]
      }
+   },
+   password: {
+       type: DataTypes.STRING,
+       allowNull: false,
+       validate: {
+           len: [1, 140]
+       }
    },
    simonHiScore: {
      type: DataTypes.INTEGER,
@@ -25,12 +32,12 @@ module.exports = function(sequelize, DataTypes) {
    },
    blackJackHiScore: {
        type: DataTypes.INTEGER,
-       AllowNull: false,
+       allowNull: false,
        defaultValue: 0
    },
    rpsNumOfWins: {
        type: DataTypes.INTEGER,
-       AllowNull: false,
+       allowNull: false,
        defaultValue: 0
    }
  });
