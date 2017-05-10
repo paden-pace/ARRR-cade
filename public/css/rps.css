@@ -3,6 +3,19 @@ body {
 }
 
 .btn-default:hover {
-	border: 10px solid yellow;
+	background-color: yellow;
 }
 
+.thumbnail {
+	position: relative;
+	display: block;
+	border: none;
+}
+
+.rps-text {
+	position: absolute;
+	z-index: 999;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
