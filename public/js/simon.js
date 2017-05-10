@@ -21,175 +21,303 @@
 // =============================================================================================
 // =============================================================================================
 
+// var simon = [];
+// var level = 0;
+// //var game = true;
+var user= [];
 var simon = [];
 var level = 0;
-//var game = true;
-var user= [];
+var clickable = true;
+var checker = true;
+
+
+var addClickHandlers = function(){
+    if(clickable){
+        $(".red-btn").on("click", function(){
+            console.log("red clicked.")
+            user.push(1);
+            console.log("USER: " + user);
+            console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
+            //playerCheck(simon, user, level);
+        });
+        $(".yellow-btn").on("click", function(){
+            //console.log("yellow clicked.")
+            user.push(2);
+            console.log("USER: " + user);
+            console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
+            //playerCheck(simon, user, level);
+        });
+        $(".green-btn").on("click", function(){
+            //console.log("green clicked.")
+            user.push(3);
+            console.log("USER: " + user);
+            console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
+            //playerCheck(simon, user, level);
+        });
+        $(".blue-btn").on("click", function(){
+            //console.log("blue clicked.")
+            user.push(4);
+            console.log("USER: " + user);
+            console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
+            //playerCheck(simon, user, level);
+        });
+        $(".enter-btn").on("click", function(){
+            if (user.length == simon.length){
+                console.log("enter clicked.")
+                for (k=0; k<= simon.length; k++){
+                    if(k == simon.length){
+
+                        if (checker == false){
+                            gameOver();
+                        } else {
+                            level++;
+                            $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
+                            console.log("score = " + level);
+                        }
+                    } else if (k<simon.length){
+                        console.log(k+ ": user[k]vs.simon[k]: "+ user[k] + " vs. " + simon[k])
+                        if (user[k] != simon[k]){
+                            checker = false;
+                        };
+                        //k++;
+                    };
+                };
+                
+            } else {
+                gameOver();
+                return;
+            };
+        });
+    } else {
+        return;
+    }
+}; 
+
+var gameOver = function(){
+    console.log("Checker:" + checker)
+    alert("You lose, and your final score is: " + level);
+    //SUBMIT THE INFORMATION TO DATABASE...
+    clickable = false;
+    user= [];
+    simon = [];
+    level = 0;
+}
+
+var playerCheck = function(simon, user, level) {
+    console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
+    if (user.length == simon.length){
+        for (k=0; k<simon.length; k++){
+            console.log( k+ ": user[k]vs.simon[k]: "+ user[k] + " vs. " + simon[k])
+            if (user[k] == simon[k]){
+                
+                next(simon, level);
+            } else if (user[k] != simon[k]){
+                checker = false;
+                return;
+            };
+        }
+        if(k == simon.length){
+            if (checker == false){
+                gameOver();
+            } else {
+                level++;
+                $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
+                console.log("score = " + level);
+            }
+        }
+        user = [];
+    } else {
+        gameOver();
+        return;
+    };
+};
+// --------------------------   Light up Functions --------------------------
+// -----------  * RED * ---------------------
+var lightRed = function(){
+    console.log("lightUP RED functioning.")
+    $(".red-s-btn").removeClass("dimmed");
+};
+var unlightRed = function(){
+    $(".red-s-btn").addClass("dimmed");
+    console.log("unlight red");
+};
+
+// -----------  * YELLOW * ---------------------
+var lightYellow = function(){
+    console.log("lightUP YELLOW functioning.")
+    $(".yellow-s-btn").removeClass("dimmed");
+};
+var unlightYellow = function(){
+    $(".yellow-s-btn").addClass("dimmed");
+    console.log("unlight yellow");
+};
+
+// -----------  * GREEN * ---------------------
+var lightGreen = function(){
+    console.log("lightUP GREEN functioning.")
+    $(".green-s-btn").removeClass("dimmed");
+};
+var unlightGreen = function(){
+    $(".green-s-btn").addClass("dimmed");
+    console.log("unlight green");
+};
+
+// -----------  * BLUE * ---------------------
+var lightBlue = function(){
+    console.log("lightUP BLUE functioning.")
+    $(".blue-s-btn").removeClass("dimmed");
+};
+var unlightBlue = function(){
+    $(".blue-s-btn").addClass("dimmed");
+    console.log("unlight blue");
+};
+
+function addNumber (simon){
+    var newNumber = (Math.floor(Math.random() * (5 - 1)) + 1);
+    if (simon.length == 0){
+        simon.push(newNumber);
+    } else if (simon.length > 0){
+        if (simon[(simon.length-1)] != newNumber){
+            simon.push(newNumber);
+        } else if (simon[(simon.length-1)] == newNumber){
+            addNumber(simon);
+        }
+    }
+};
+
+var simonTurn = function(simon){
+    addNumber(simon);
+    console.log("Simon says " + simon);
+    clickable = false;
+    var currentLight = 0;
+    user = [];
+
+    function setNextLight(){
+    console.log("setNextLight function.")
+        if(currentLight >= simon.length){
+            currentLight = 0;
+            clickable = true;
+            return;
+        }
+        switch(simon[currentLight]){
+            case 1:
+                console.log("CASE RED");
+                lightRed();
+                setTimeout(unlightRed, 500)
+                break;
+            case 2:
+                console.log("CASE YELLOW");
+                lightYellow();
+                setTimeout(unlightYellow, 500)
+                break;
+            case 3:
+                console.log("CASE GREEN");
+                lightGreen();
+                setTimeout(unlightGreen, 500)
+                break;
+            case 4:
+                console.log("CASE BLUE");
+                lightBlue();
+                setTimeout(unlightBlue, 500)
+                break;
+            };
+        currentLight++;
+        setTimeout(setNextLight, 550);
+    }
+    setNextLight();
+};
+
+
+
+// var simonTurn = function(simon, level){
+//     addNumber(simon);
+//     console.log("Simon says " + simon);
+//     //for(i=0; i<simon.length; i++){
+//     var i = 0;
+//     var lightUP = setInterval(function(){  
+//         if (i<simon.length){
+//         //for(i=0; i<simon.length; i++){
+//             //var lightUp = function(i){
+//                 //console.log("lightUP functioning.")
+//         console.log("i = " + i);
+//         if(simon[i] == 1){
+//             console.log("lightUP RED functioning.")
+//             $(".red-s-btn").removeClass("dimmed");
+//             window.setTimeout(unlightRed, 1000);
+//             //console.log("lightUP red.")
+//         } else if(simon[i] == 2){
+//             console.log("lightUP YELLOW functioning.")
+//             $(".yellow-s-btn").removeClass("dimmed");
+//             window.setTimeout(unlightYellow, 1000);
+//             //console.log("lightUP yellow.")
+//         } else if(simon[i] == 3){
+//             console.log("lightUP GREEN functioning.")
+//             $(".green-s-btn").removeClass("dimmed");
+//             window.setTimeout(unlightGreen, 1000);
+//             //console.log("lightUP green.")
+//         } else if(simon[i] == 4){
+//             console.log("lightUP BLUE functioning.")
+//             $(".blue-s-btn").removeClass("dimmed");
+//             window.setTimeout(unlightBlue, 1000);
+//             //console.log("lightUP blue.")
+//         }
+
+//         i++;
+//         };
+//     }, 1050);
+//     //make it click able
+//     return;
+// };
 
 $(document).ready(function() {
     console.log("page connected.");
-
-    var playerCheck = function(simon, user, level) {
-        console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
-        if (user.length < simon.length){    
-            playerTurn(simon, level, user);
-        } else if (user.length == simon.length){
-            for (k=0; k<user.length; k++){
-                console.log("user[k]vs.simon[k]: "+ user[k] + " vs. " + simon[k])
-                if (user[k] == simon[k]){
-                    level++;
-                    $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
-                    console.log("score = " + level);
-                    next(simon, level);
-                } else if (user[k] != simon[k]){
-                    alert("You lose, and your final score is: " + level);
-                    //game = false;
-                    return;
-                };
-            }
-            user = [];
-        };
-        
-    };
-
-    var playerTurn = function(simon, level, user) {
-        //var user = user;
-        console.log("USER: " + user);
-        console.log("playerTurn")
-        while( user.length <= simon.length){
-        //console.log("USER: " + user)
-            $(".red-btn").on("click", function(){
-                //console.log("red clicked.")
-                user.push(1);
-                console.log("USER: " + user);
-                playerCheck(simon, user, level);
-            });
-            $(".yellow-btn").on("click", function(){
-                //console.log("yellow clicked.")
-                user.push(2);
-                console.log("USER: " + user);
-                playerCheck(simon, user, level);
-            });
-            $(".green-btn").on("click", function(){
-                //console.log("green clicked.")
-                user.push(3);
-                console.log("USER: " + user);
-                playerCheck(simon, user, level);
-            });
-            $(".blue-btn").on("click", function(){
-                //console.log("blue clicked.")
-                user.push(4);
-                console.log("USER: " + user);
-                playerCheck(simon, user, level);
-            });
-        };
-    };
-
-    var unlightRed = function(){
-        $(".red-btn").addClass("dimmed");
-        //console.log("unlight red");
-    };
-    var unlightYellow = function(){
-        $(".yellow-btn").addClass("dimmed");
-        //console.log("unlight yellow");
-    };
-    var unlightGreen = function(){
-        $(".green-btn").addClass("dimmed");
-        //console.log("unlight green");
-    };
-    var unlightBlue = function(){
-        $(".blue-btn").addClass("dimmed");
-        //console.log("unlight blue");
-    };
-
-    var unlight = function(){
-        $(".red-btn").addClass("dimmed");
-        $(".yellow-btn").addClass("dimmed");
-        $(".green-btn").addClass("dimmed");
-        $(".blue-btn").addClass("dimmed");
-    }
+    addClickHandlers();
 
 
-    function addNumber (simon, level){
-        //console.log("simon: " + simon);
-        var newNumber = (Math.floor(Math.random() * (5 - 1)) + 1);
-        if (simon[(simon.length-1)] != newNumber){
-            simon.push(newNumber);
-        } else if (simon[(simon.length-1)] != newNumber){
-            //addNumber(simon);
-        }
-    };
+   
 
-    var simonTurn = function(simon, level){
-        //addNumber(simon, level);
-        var newNumber = (Math.floor(Math.random() * (5 - 1)) + 1);
-        if (simon[(simon.length-1)] != newNumber){
-            simon.push(newNumber);
-        } else if (simon[(simon.length-1)] != newNumber){
-            //addNumber(simon);
-        }
-        console.log("Simon says " + simon);
-        //for(i=0; i<simon.length; i++){
-        var i = 0;
-        setInterval(function(){
-            if (i<simon.length){
-                //var lightUp = function(i){
-                    //console.log("lightUP functioning.")
-                    console.log("i = " + i);
-                    if(simon[i] == 1){
-                        console.log("lightUP RED functioning.")
-                        $(".red-btn").removeClass("dimmed");
-                        window.setTimeout(unlightRed, 1000);
-                        //console.log("lightUP red.")
-                    } else if(simon[i] == 2){
-                        console.log("lightUP YELLOW functioning.")
-                        $(".yellow-btn").removeClass("dimmed");
-                        window.setTimeout(unlightYellow, 1000);
-                        //console.log("lightUP yellow.")
-                    } else if(simon[i] == 3){
-                        console.log("lightUP GREEN functioning.")
-                        $(".green-btn").removeClass("dimmed");
-                        window.setTimeout(unlightGreen, 1000);
-                        //console.log("lightUP green.")
-                    } else if(simon[i] == 4){
-                        console.log("lightUP BLUE functioning.")
-                        $(".blue-btn").removeClass("dimmed");
-                        window.setTimeout(unlightBlue, 1000);
-                        //console.log("lightUP blue.")
-                    }
-                    //window.setTimeout(unlight, 1000);
-                };
-            //};
-            //setTimeout(lightUp, 1000);
-            i++;
-            //lightUp(i);
-
-        }, 1050);
-        
-    };
+    // var unlightRed = function(){
+    //     $(".red-s-btn").addClass("dimmed");
+    //     //console.log("unlight red");
+    // };
+    // var unlightYellow = function(){
+    //     $(".yellow-s-btn").addClass("dimmed");
+    //     //console.log("unlight yellow");
+    // };
+    // var unlightGreen = function(){
+    //     $(".green-s-btn").addClass("dimmed");
+    //     //console.log("unlight green");
+    // };
+    // var unlightBlue = function(){
+    //     $(".blue-s-btn").addClass("dimmed");
+    //     //console.log("unlight blue");
+    // };
 
 
-    var next = function(simon, level){
-        //console.log("Simon says " + simon);
-        //while(game == true){
-            simonTurn(simon, level);
-            console.log("LEVEL: " + level);
-            var userReset = [];
-            playerTurn(simon, level, userReset);
-        //};
-    };
+    
 
 
 
-    $(".start-btn").on("click", function(){
-        var simon = [];
-        var level = 0;
-        //var game = true;
-        var user= [];
-        console.log("Game started.");
-        next(simon, level);
+    // var next = function(simon, level){
+    //     //console.log("Simon says " + simon);
+    //     //while(game == true){
+    //         simonTurn(simon);
+    //         console.log("LEVEL: " + level);
+    //         var userReset = [];
+    //         playerTurn(simon, level, userReset);
+    //     //};
+    // };
+
+    $(".next-btn").on("click", function(){
+        simonTurn(simon, level);
     });
 
-
+    $(".start-btn").on("click", function(){
+        console.log("Game started.");
+        $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
+        checker = true;
+        simonTurn(simon, level);
+    });
+    
 
 });
