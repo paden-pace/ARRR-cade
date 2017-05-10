@@ -2,6 +2,12 @@
 // ex.
 // action: [{image: link, value: RPS}]
 
+//TO DO
+// Only show text on action used by AI
+// User click show text somewhere?
+// improve jumbotron style
+// improve stat display style
+
 var rps = {
     //player stats
     player: {
