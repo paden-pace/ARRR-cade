@@ -34,8 +34,9 @@ $("#logIn").on("submit",function(event) {
             document.getElementById('id01').style.display = 'none';
     }
     $.post("api/players", player).then(function(x) {
-        console.log(x);
-        currentUser = x.playerName;
-        console.log(currentUser);
+        console.log('x: ', x);
+        currentUser = x[0].playerName;
+        console.log('current user: ',currentUser);
     })
+    $('h5').text("Logged in as: "+ currentUser);
 })
