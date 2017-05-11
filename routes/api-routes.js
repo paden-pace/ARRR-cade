@@ -29,13 +29,52 @@ module.exports = function (app) {
     })
     
     app.post("/api/players", function(req, res){
-        db.Player.create({
-            playerName: req.body.playerName,
-            password: req.body.password
+        console.log(req.body)
+        db.Player.findOrCreate({
+            where: {
+                playerName: req.body.playerName
+            },
+            defaults: {
+                password: req.body.password
+            }
         }).then(function(results){
-            res.json(results);
+            // console.log("results", results.datavalues);
+            console.log("results.password", results.password);
+            console.log("req.body.password", req.body.password);
+            if(results[0].password !== req.body.password) {
+                // alert('this username already exists.');
+                res.redirect('/');
+                // res.json(results);
+            } else {
+                res.json(results);
+            }
+        }).catch(function(error){
+            console.log(error);
+            res.end();
         })
+    });
+
+
+  // PUT route for updating scoress
+  app.put("/api/players", function(req, res) {
+    // Add code here to update a score using the values in req.body, 
+    // where the id is equal to req.body.id 
+    // and return the result to the user using res.json
+    var updatedVersion = {
+      simonHiScore: req.body.simonHiScore,
+      pogNumOfWins: req.body.pogNumOfWins,
+      blackJackHiScore: req.body.blackJackHiScore,
+      rpsNumOfWins: req.body.rpsNumOfWins
+    }
+    
+    db.Player.update(updatedVersion, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(results){
+      res.json(results);
     })
+  });
 
     //   // POST route for saving a new todo. We can create a todo using the data on req.body
     //   app.post("/api/burgers", function(req, res) {
@@ -62,7 +101,6 @@ module.exports = function (app) {
     //     // Use the sequelize destroy method to delete a record from our table with the
     //     // id in req.params.id. res.json the result back to the user
     //   });
-
 
 
     // //PUT route for updating Burgerss. We can get the updated todo data from req.body

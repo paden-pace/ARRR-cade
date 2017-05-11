@@ -23,7 +23,7 @@ module.exports = function (app) {
   })
 
 
-  app.get("/pog/", function(req, res){
+  app.get("/pog", function(req, res){
     res.sendFile(path.join(__dirname+ "./../public/PogPage/index.html"))
   });
 
