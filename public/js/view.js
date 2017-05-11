@@ -16,9 +16,9 @@ $('#switchToCreate').on('click', function () {
 // $('#login').on('click', function(){
 
 // })
-
-$("#createNewPlayer").on("click",function() {
-    console.log('clicked');
+var currentUser = '';
+$("#logIn").on("submit",function(event) {
+    event.preventDefault();
     var playerName = $("input.username");
     var password = $("input.pword");
     var player = {
@@ -29,8 +29,13 @@ $("#createNewPlayer").on("click",function() {
             .val()
             .trim()
     };
-    console.log(player)
-    $.post("api/players",player).then(function(x) {
-        console.log(x)
+    console.log(player);
+    if(player.playerName.length > 0 && player.password.length > 0){
+            document.getElementById('id01').style.display = 'none';
+    }
+    $.post("api/players", player).then(function(x) {
+        console.log(x);
+        currentUser = x.playerName;
+        console.log(currentUser);
     })
 })
