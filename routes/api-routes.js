@@ -30,12 +30,24 @@ module.exports = function (app) {
     
     app.post("/api/players", function(req, res){
         console.log(req.body)
-        db.Player.create({
-            playerName: req.body.playerName,
-            password: req.body.password
+        db.Player.findOrCreate({
+            where: {
+                playerName: req.body.playerName
+            },
+            defaults: {
+                password: req.body.password
+            }
         }).then(function(results){
-            console.log(results);
-            res.json(results);
+            // console.log("results", results.datavalues);
+            console.log("results.password", results.password);
+            console.log("req.body.password", req.body.password);
+            if(results[0].password !== req.body.password) {
+                // alert('this username already exists.');
+                res.redirect('/');
+                // res.json(results);
+            } else {
+                res.json(results);
+            }
         }).catch(function(error){
             console.log(error);
             res.end();
