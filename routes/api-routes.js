@@ -39,7 +39,7 @@ module.exports = function (app) {
             }
         }).then(function(results){
             // console.log("results", results.datavalues);
-            console.log("results.password", results.password);
+            // console.log("results.password", results.password);
             console.log("req.body.password", req.body.password);
             if(results[0].password !== req.body.password) {
                 // alert('this username already exists.');
