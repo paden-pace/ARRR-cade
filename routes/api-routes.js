@@ -22,7 +22,25 @@ module.exports = function (app) {
     //       res.json(results);
     //     });
     //   });
-
+    app.get("/api/players", function(req, res){
+        db.Player.findAll({}).then(function(results){
+            res.json(results);
+        })
+    })
+    
+    app.post("/api/players", function(req, res){
+        console.log(req.body)
+        db.Player.create({
+            playerName: req.body.playerName,
+            password: req.body.password
+        }).then(function(results){
+            console.log(results);
+            res.json(results);
+        }).catch(function(error){
+            console.log(error);
+            res.end();
+        })
+    })
 
     //   // POST route for saving a new todo. We can create a todo using the data on req.body
     //   app.post("/api/burgers", function(req, res) {

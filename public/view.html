@@ -5,18 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./css/view.css" />
     <title>Arcade Sequelize App</title>
 </head>
 
 <body>
+    <div id="id01" class="modal">
+
+        <form id='logIn' class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
+                <h2>CREATE A PROFILE</h2>
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" class='username' required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
+
+                <button type="submit" id='createNewPlayer'>Create Profile</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+        <form id="createLogIn" class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <h2>Log In to an existing profile</h2>
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button id='login' type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Don't yet have a profile? <a href="#" id='switchToCreate'>Create a Profile</a></span>
+            </div>
+        </form>
+    </div>
     <h1>Welcome to the arcade!</h1>
     <h2>LeaderBoard</h2>
 
-    <h2><button href='./PogPage/index.html'>PogProwess</button></h2>
-    <h2><button>Rock Paper Scissors</button></h2>
-    <h2><button>Simon</button></h2>
-    <h2><button>Black Jack</button></h2>
+    <h2><button class='buttonz' href='./PogPage/index.html'>PogProwess</button></h2>
+    <h2><button class='buttonz'>Rock Paper Scissors</button></h2>
+    <h2><button class='buttonz'>Simon</button></h2>
+    <h2><button class='buttonz'>Black Jack</button></h2>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="./js/view.js"></script>
+
+
+    <a class="apiOption" href="./api/players">
+        <p>API Players List</p>
+    </a>
 </body>
 
 </html>

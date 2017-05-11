@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="./../css/rps.css" type="text/css" />
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	
+
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Rock Paper Scissors</h1>
+			<p>First to 3 wins the game!</p>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12" id="scores">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-md-4 computer-score text-left"></div>
+						<div class="col-md-4 result text-center"></div>
+						<div class="col-md-4 player-score text-right"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-12" id="computer-side">
+				<div class="panel panel-default">
+					<div class="panel-heading">BIG BAD AI</div>
+					<div class="panel body text-center">
+						<div class="col-md-4">
+							<button class="btn btn-default" id="comp-rock" data-value="1">R</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default" id="comp-paper" data-value="2">P</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default" id="comp-scissors" data-value="3">S</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12" id="player-side">
+				<div class="panel panel-default">
+					<div class="panel-heading">You</div>
+					<div class="panel body text-center">
+						<div class="col-md-4">
+							<button class="btn btn-default player" id="player-rock" data-value="1">R</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default player" id="player-paper" data-value="2">P</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default player" id="player-scissors" data-value="3">S</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/rps.js" type="text/javascript"></script>
+	</div>
+</body>
+</html>

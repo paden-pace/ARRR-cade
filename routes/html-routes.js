@@ -19,12 +19,12 @@ module.exports = function (app) {
   });
 
   app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname + "../public/view.html"))
+    res.sendFile(path.join(__dirname + "./../public/view.html"))
   })
 
 
   app.get("/pog/", function(req, res){
-    res.sendFile(path.join(__dirname+ "../public/PogPage/index.html"))
+    res.sendFile(path.join(__dirname+ "./../public/PogPage/index.html"))
   });
 
 };
