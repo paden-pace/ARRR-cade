@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/view.css" />
     <title>Arcade Sequelize App</title>
 </head>
@@ -63,7 +65,58 @@
     <h1>Welcome to the arcade!</h1>
     <h2>LeaderBoard</h2>
 
+
+    <div class="col-md-12">
+        <ul class="nav nav-tabs row">
+            <li role="presentation" class="active" id="list-pog"><a class="score-tab" id="tab-pog" data-toggle="tab">Pog</a></li>
+
+            <li role="presentation" class="" id="list-rps"><a class="score-tab" id="tab-rps" data-toggle="tab">RPS</a></li>
+
+            <li role="presentation" class="" id="list-simon"><a class="score-tab" id="tab-simon" data-toggle="tab" >Simon</a></li>
+
+            <li role="presentation" class="" id="list-card"><a class="score-tab" id="tab-card" data-toggle="tab">Black Jack</a></li>
+        </ul>
+        <div class="tab-content row">
+            <div class="col-md-12 score-pane tab-pane fade in active" id="score-pog">
+                <div class="row score-name">
+                    <h3>Pogs!</h3>
+                </div>
+                <div> 
+                    <p>Pog score goes here.</p>
+                    <div class="pog-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-rps">
+                <div class="row score-name">
+                    <h3>Rock, Paper, Scissors!</h3>
+                </div>
+                <div> 
+                    <p>Rock, Paper, Scissors score goes here.</p>
+                    <div class="rps-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-simon">
+                <div class="row score-name">
+                    <h3>Simon Says</h3>
+                </div>
+                <div> 
+                    <p>Simon score goes here.</p>
+                    <div class="simon-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-card">
+                <div class="row score-name">
+                    <h3>Black Jack</h3>
+                </div>
+                <div> 
+                    <p>Black Jack score goes here.</p>
+                    <div class="card-score-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <h2><button onclick='return res.redirect("/PogPage")' class='buttonz' href='./PogPage/index.html'>PogProwess</button></h2>
+
     <h2><button class='buttonz'>Rock Paper Scissors</button></h2>
     <h2><button class='buttonz'>Simon</button></h2>
     <h2><button class='buttonz'>Black Jack</button></h2>

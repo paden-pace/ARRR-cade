@@ -117,12 +117,12 @@ var cards = [
     },{
         number: "queen",
         suite: "diamond", 
-        code: "kd",
+        code: "qd",
         value: "10"
     },{
         number: "king",
         suite: "diamond", 
-        code: "qd",
+        code: "kd",
         value: "10"
     },{
         number: "ace",
@@ -182,12 +182,12 @@ var cards = [
     },{
         number: "queen",
         suite: "club", 
-        code: "kc",
+        code: "qc",
         value: "10"
     },{
         number: "king",
         suite: "club", 
-        code: "qc",
+        code: "kc",
         value: "10"
     },{
         number: "ace",
