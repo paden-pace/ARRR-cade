@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Texas2015",
+    "password": "",
     "database": "arcade_db",
     "host": "localhost",
     "dialect": "mysql"

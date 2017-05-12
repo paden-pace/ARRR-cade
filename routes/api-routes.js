@@ -43,8 +43,8 @@ module.exports = function (app) {
             console.log("req.body.password", req.body.password);
             if(results[0].password !== req.body.password) {
                 // alert('this username already exists.');
-                res.redirect('/');
-                // res.json(results);
+                // res.redirect('/');
+                res.json({response: 'this password is not correct'});
             } else {
                 res.json(results);
             }
@@ -77,7 +77,7 @@ module.exports = function (app) {
   });
 
 
-  app.post('/api/wins', function(req, res){
+  app.post('/api/pogwins', function(req, res){
       var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
       console.log(req.body);
       db.Player.findOne({
@@ -89,6 +89,20 @@ module.exports = function (app) {
           console.log(player);
               player.updateAttributes({
                   pogNumOfWins: player.pogNumOfWins+1
+          })
+      })
+  })
+
+  app.post('/api/rpswins', function(req, res){
+      var updatedPlayer = {"rpsNumOfWins": req.body.rpsNumOfWins+1};
+      db.Player.findOne({
+          where:
+            {
+                playerName: req.body.currentName
+            }
+      }).then(function(player){
+          player.updateAttributes({
+              rpsNumOfWins: player.rpsNumOfWins+1
           })
       })
   })

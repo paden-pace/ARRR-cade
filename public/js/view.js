@@ -45,32 +45,42 @@ $("#logIn").on("submit",function(event) {
 }
     $.post("api/players", player).then(function(x) {
         console.log('x: ', x);
-
-        currentName = x[0].playerName;
-        console.log('current name: ',currentName);
-        localStorage.setItem('currentName', currentName);
+        if (x.response == 'this password is not correct') {
+            alert('incorrect password, please try again.');
+            document.getElementById('id01').style.display = 'block'
+        } else {
+            document.getElementById('id01').style.display = 'none'
+            currentUser = x[0].playerName;
+            console.log('current user: ', currentUser);
+            $('h5').text("Logged in as: " + currentUser);
+            localStorage.setItem('currentUser', currentUser);
         
+            currentName = x[0].playerName;
+            console.log('current name: ',currentName);
+            localStorage.setItem('currentName', currentName);
+            
 
-        currentSimon = x[0].simonHiScore;
-        console.log('current simon: ',currentSimon);
-        localStorage.setItem('currentSimon', currentSimon);
+            currentSimon = x[0].simonHiScore;
+            console.log('current simon: ',currentSimon);
+            localStorage.setItem('currentSimon', currentSimon);
 
-        currentPog = x[0].pogNumOfWins;
-        console.log('current pog: ',currentPog);
-        localStorage.setItem('currentPog', currentPog);
+            currentPog = x[0].pogNumOfWins;
+            console.log('current pog: ',currentPog);
+            localStorage.setItem('currentPog', currentPog);
 
-        currentCard = x[0].blackJackHiScore;
-        console.log('current card: ',currentCard);
-        localStorage.setItem('currentCard', currentCard);
+            currentCard = x[0].blackJackHiScore;
+            console.log('current card: ',currentCard);
+            localStorage.setItem('currentCard', currentCard);
 
-        currentRps = x[0].rpsNumOfWins;
-        console.log('current rps: ',currentRps);
-        localStorage.setItem('currentRps', currentRps);
+            currentRps = x[0].rpsNumOfWins;
+            console.log('current rps: ',currentRps);
+            localStorage.setItem('currentRps', currentRps);
 
-        $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
-        $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
-        $('.logout-button').attr('onClick', 'logOutFunction();');
-        displayScores();
+            $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+            $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+            $('.logout-button').attr('onClick', 'logOutFunction();');
+            displayScores()
+        }
     })
 
 })
