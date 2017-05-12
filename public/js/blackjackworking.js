@@ -1,10 +1,9 @@
-
 // card deck API urls
- 
- var guess = 3;
-    var level = 0;
 
-(function() {
+var guess = 3;
+var level = 0;
+
+(function () {
     //api data
     var dealer = {
         deck: '',
@@ -33,10 +32,38 @@
         choice = $('#choice'),
         remain = $('#remain'),
         restart = $('#restart');
-        check = $(".check");
+    check = $(".check");
 
     //cards
-    var cards = [{'1': 0}, {'2': 1}, {'3': 2}, {'4': 3}, {'5': 4}, {'6': 5}, {'7': 6}, {'8': 7}, {'9': 8}, {'10': 9}, {'J': 10}, {'Q': 11}, {'K': 12}, {'A': 13}];
+    var cards = [{
+        '1': 0
+    }, {
+        '2': 1
+    }, {
+        '3': 2
+    }, {
+        '4': 3
+    }, {
+        '5': 4
+    }, {
+        '6': 5
+    }, {
+        '7': 6
+    }, {
+        '8': 7
+    }, {
+        '9': 8
+    }, {
+        '10': 9
+    }, {
+        'J': 10
+    }, {
+        'Q': 11
+    }, {
+        'K': 12
+    }, {
+        'A': 13
+    }];
 
     //messages
     var messages = {
@@ -58,11 +85,11 @@
         start.show();
         game.status = 'NEW';
 
-        start.on('click', function(){
-            var dealer = {} ? handleData(deck) : handleData(shuffle); 
-            
+        start.on('click', function () {
+            var dealer = {} ? handleData(deck) : handleData(shuffle);
+
             start.hide();
-             check.show();   
+            check.show();
             state.show();
             restart.show();
         });
@@ -73,7 +100,7 @@
         $.ajax({
             url: stateUrl,
             type: 'GET'
-        }).then(function(data) {
+        }).then(function (data) {
             if (dealer.deck === '') {
                 dealer.deck = data;
             } else {
@@ -82,7 +109,7 @@
             handleStatus();
         });
     }
-    
+
 
     function handleStatus() {
         console.log(game.status);
@@ -92,7 +119,7 @@
                 handleData(card);
                 break;
             case "STARTED":
-            console.log(dealer);
+                console.log(dealer);
                 player.attr('src', dealer.draw.cards[0].image);
                 choice.text(messages.start);
                 drawCard();
@@ -137,27 +164,27 @@
     }
 
     function drawCard() {
-        higher.on('click', function(){
-             guess = "higher";
+        higher.on('click', function () {
+            guess = "higher";
             // handleData(card);
-                });
-        lower.on('click', function(){
-             guess = "lower"; 
-            
-                });
-            game.status = 'SELECTED';
-            choice.text(messages[guess]);
-            game.drawn = dealer.draw.cards[0].value;
-            game.player = guess;
-            // handleData(card);
-        }
+        });
+        lower.on('click', function () {
+            guess = "lower";
 
-    check.on("click", function(){
+        });
+        game.status = 'SELECTED';
+        choice.text(messages[guess]);
+        game.drawn = dealer.draw.cards[0].value;
+        game.player = guess;
+        // handleData(card);
+    }
+
+    check.on("click", function () {
         console.log("check clicked");
         handleData(card);
     });
 
-    restart.on('click', function(){
+    restart.on('click', function () {
         //delete card data
         dealer.draw = '';
 
@@ -173,24 +200,24 @@
         init();
     });
 
-    var gameOver = function(level){
-    
-    alert("You lose, and your final score is: " + level);
-    //SUBMIT THE INFORMATION TO DATABASE...
-    updateScore(level);
-    player= [];
-    dealer = [];
-    level = 0;
-}
+    var gameOver = function (level) {
 
-        sequelize function
-        function updateScore(score) {
+        alert("You lose, and your final score is: " + level);
+        //SUBMIT THE INFORMATION TO DATABASE...
+        updateScore(level);
+        player = [];
+        dealer = [];
+        level = 0;
+    }
+
+    sequelize
+    function updateScore(score) {
         var data = {
             currentName: localStorage.getItem('currentName'),
             blackJackHiScore: score
         }
         $.post('/api/cardUpdate', data);
-        if (level > (localStorage.getItem('currentblackjack'))){
+        if (level > (localStorage.getItem('currentblackjack'))) {
             localStorage.setItem('currentSimon', score);
         }
     }
@@ -201,4 +228,4 @@
 
     init();
 
-}());    
+}());

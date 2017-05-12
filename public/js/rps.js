@@ -10,25 +10,25 @@ var rps = {
         pick: 0
     },
     //game flow
-    game: function(val) {    	
+    game: function (val) {
         this.userInput(val);
         this.compInput();
         this.compareMoves();
         this.endRound();
     },
-    initialize: function() {
-    	rps.player.score = 0;
+    initialize: function () {
+        rps.player.score = 0;
         rps.comp.score = 0;
         rps.updateDisplay(-1, 0);
     },
     //take user input from page
-    userInput: function(val) {
+    userInput: function (val) {
         rps.player.pick = val;
         console.log("Player: " + val);
     },
 
     //random input 1-3
-    compInput: function() {
+    compInput: function () {
         //random value from 1-3
         var random = Math.floor(Math.random() * 3 + 1);
         rps.comp.pick = random;
@@ -36,7 +36,7 @@ var rps = {
     },
 
     //compare userInput and compInput
-    compareMoves: function() {
+    compareMoves: function () {
         var player = rps.player.pick;
         var comp = rps.comp.pick;
         var result;
@@ -71,7 +71,7 @@ var rps = {
         }
         rps.messageUpdate(result);
     },
-    updateDisplay: function(player, comp) {
+    updateDisplay: function (player, comp) {
         var img = $(".thumbnail img");
         var img2 = $(".rps-text img");
         var text = "../assets/img/###-text.png";
@@ -88,7 +88,7 @@ var rps = {
         }
     },
     //decide if game ends
-    endRound: function() {
+    endRound: function () {
         var player = rps.player.score;
         var comp = rps.comp.score;
 
@@ -97,8 +97,10 @@ var rps = {
             //return win to database
             //return to main page
             $(".result").html("You win! Game over!");
-            $.post("/api/rpswins", {currentUser: localStorage.getItem("currentUser")});
-            
+            $.post("/api/rpswins", {
+                currentUser: localStorage.getItem("currentUser")
+            });
+
             rps.initialize();
         } else if (comp == 3) {
             console.log("You lose");
@@ -110,7 +112,7 @@ var rps = {
             //next round
         }
     },
-    messageUpdate: function(result) {
+    messageUpdate: function (result) {
         var player = rps.player.score;
         var comp = rps.comp.score;
 
@@ -123,7 +125,7 @@ var rps = {
 
 rps.initialize();
 
-$(".player").on("click", function() {
+$(".player").on("click", function () {
     var value = $(this).attr("data-value");
     rps.game(value);
 });

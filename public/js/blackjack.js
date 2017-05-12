@@ -12,20 +12,20 @@
 // if hit function adds a randomcard that causes playerTotal > 21 then bust.
 // if player clicks stand then turn is over.
 // turn over randomcard 2.
- // If dealerTotal <playerTotal add random score until dealerTotal > playerTotal. if dealerTotal > 21 then player wins.
+// If dealerTotal <playerTotal add random score until dealerTotal > playerTotal. if dealerTotal > 21 then player wins.
 // ask to bet again\
 
 // card deck API urls
- 
 
 
-(function() {
+
+(function () {
     //api data
     var dealer = {
         deck: '',
         draw: ''
     };
-    
+
     //game states
     var game = {
         status: '',
@@ -48,7 +48,35 @@
         restart = $('#restart');
 
     //cards
-    var cards = [{'1': 0}, {'2': 1}, {'3': 2}, {'4': 3}, {'5': 4}, {'6': 5}, {'7': 6}, {'8': 7}, {'9': 8}, {'10': 9}, {'J': 10}, {'Q': 11}, {'K': 12}, {'A': 13}];
+    var cards = [{
+        '1': 0
+    }, {
+        '2': 1
+    }, {
+        '3': 2
+    }, {
+        '4': 3
+    }, {
+        '5': 4
+    }, {
+        '6': 5
+    }, {
+        '7': 6
+    }, {
+        '8': 7
+    }, {
+        '9': 8
+    }, {
+        '10': 9
+    }, {
+        'J': 10
+    }, {
+        'Q': 11
+    }, {
+        'K': 12
+    }, {
+        'A': 13
+    }];
 
     //messages
     var messages = {
@@ -70,9 +98,9 @@
         start.show();
         game.status = 'NEW';
 
-        start.on('click', function(){
-            var dealer = {} ? handleData(deck) : handleData(shuffle); 
-            
+        start.on('click', function () {
+            var dealer = {} ? handleData(deck) : handleData(shuffle);
+
             start.hide();
 
             state.show();
@@ -84,7 +112,7 @@
         $.ajax({
             url: stateUrl,
             type: 'GET'
-        }).then(function(data) {
+        }).then(function (data) {
             if (dealer.deck === '') {
                 dealer.deck = data;
             } else {
@@ -93,7 +121,7 @@
             handleStatus();
         });
     }
-    
+
 
     function handleStatus() {
         console.log(game.status);
@@ -103,7 +131,7 @@
                 handleData(card);
                 break;
             case "STARTED":
-            console.log(dealer);
+                console.log(dealer);
                 player.attr('src', dealer.draw.cards[0].image);
                 choice.text(messages.start);
                 drawCard();
@@ -143,7 +171,7 @@
     }
 
     function drawCard() {
-        state.on('click', function(){
+        state.on('click', function () {
             var guess = $(this).attr('class').split(' ')[0].toLowerCase();
 
             game.status = 'SELECTED';
@@ -154,7 +182,7 @@
         });
     }
 
-    restart.on('click', function(){
+    restart.on('click', function () {
         //delete card data
         dealer.draw = '';
 
@@ -172,4 +200,4 @@
 
     init();
 
-}());    
+}());
