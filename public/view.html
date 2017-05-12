@@ -89,7 +89,7 @@
                 </div>
                 <div> 
                     <p>Pog score goes here.</p>
-                    <div class="pog-score-container"></div>
+                    <div class="pog-score-container all-score-container"></div>
                 </div>
             </div>
             <div class="col-md-12 score-pane tab-pane fade" id="score-rps">
@@ -98,7 +98,7 @@
                 </div>
                 <div> 
                     <p>Rock, Paper, Scissors score goes here.</p>
-                    <div class="rps-score-container"></div>
+                    <div class="rps-score-container all-score-container"></div>
                 </div>
             </div>
             <div class="col-md-12 score-pane tab-pane fade" id="score-simon">
@@ -107,7 +107,7 @@
                 </div>
                 <div> 
                     <p>Simon score goes here.</p>
-                    <div class="simon-score-container"></div>
+                    <div class="simon-score-container all-score-container"></div>
                 </div>
             </div>
             <div class="col-md-12 score-pane tab-pane fade" id="score-card">
@@ -116,31 +116,66 @@
                 </div>
                 <div> 
                     <p>Black Jack score goes here.</p>
-                    <div class="card-score-container"></div>
+                    <div class="card-score-container all-score-container"></div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <a href="./pog">
-    <h2><button class='buttonz'>PogProwess</button></h2>
-    </a>
-
-    <a href="./rps">
-    <h2><button class='buttonz'>Rock, Paper, Scissors</button></h2>
-    </a>
-
-    <a href="./simon">
-	<h2><button class='buttonz'>Simon</button></h2>
-	</a>
-
-    <a href="./card">
-<!--h2><button id='sendPog' class='buttonz' href='/PogPage/index.html'>PogProwess</button></h2>-->
-
-    <h2><button class='buttonz'>Black Jack</button></h2>
-    </a>
-
+    <div class="scores-and-buttons">
+        <div class="row pog-row">
+            <div class="col-md-6 score-col">
+                <div class="pog-score">
+                </div>
+            </div>
+            <div class="col-md-6 button-col">
+                <div class="rps-button">
+                    <a href="./pog">
+                        <h2><button class='buttonz'>PogProwess</button></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row rps-row">
+            <div class="col-md-6 score-col">
+                <div class="rps-score">
+                </div>
+            </div>
+            <div class="col-md-6 button-col">
+                <div class="rps-button">
+                    <a href="./rps">
+                        <h2><button class='buttonz'>Rock, Paper, Scissors</button></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row simon-row">
+            <div class="col-md-6 score-col">
+                <div class="simon-score">
+                </div>
+            </div>
+            <div class="col-md-6 button-col">
+                <div class="simon-button">
+                    <a href="./simon">
+                        <h2><button class='buttonz'>Simon</button></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row card-row">
+            <div class="col-md-6 score-col">
+                <div class="card-score">
+                </div>
+            </div>
+            <div class="col-md-6 button-col">
+                <div class="card-button">
+                    <a href="./card">
+                        <h2><button class='buttonz'>Black Jack</button></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="./js/view.js"></script>

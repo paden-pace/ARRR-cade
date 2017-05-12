@@ -49,6 +49,7 @@ $("#logIn").on("submit",function(event) {
         currentName = x[0].playerName;
         console.log('current name: ',currentName);
         localStorage.setItem('currentName', currentName);
+        
 
         currentSimon = x[0].simonHiScore;
         console.log('current simon: ',currentSimon);
@@ -69,6 +70,7 @@ $("#logIn").on("submit",function(event) {
         $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
         $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
         $('.logout-button').attr('onClick', 'logOutFunction();');
+        displayScores();
     })
 
 })
@@ -79,8 +81,17 @@ if ((localStorage.getItem('currentName')) != ''){
     document.getElementById('id01').style.display = 'none';
     $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
     $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
-    $('.logout-button').attr('onClick', 'logOutFunction();');
+    displayScores();
+    
 }
+
+function displayScores() {
+    $('.logout-button').attr('onClick', 'logOutFunction();');
+    $(".pog-score").html("<h5 class='score-text'>Your current Pog Score: " + (localStorage.getItem('currentPog'))+ "</h5>");
+    $(".rps-score").html("<h5 class='score-text'>Your current RPS Score: " + (localStorage.getItem('currentRps'))+ "</h5>");
+    $(".simon-score").html("<h5 class='score-text'>Your current Simon Score: " + (localStorage.getItem('currentSimon'))+ "</h5>");
+    $(".card-score").html("<h5 class='score-text'>Your current Card Score: " + (localStorage.getItem('currentCard'))+ "</h5>");
+};
 
 function pogClick () {
 		$("#score-pog").addClass("active");
@@ -376,3 +387,4 @@ var logOutFunction = function () {
     document.getElementById('id01').style.display = 'block';
     console.log("Log-Out Clicked #2!")
 };
+

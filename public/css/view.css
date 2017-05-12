@@ -55,6 +55,10 @@ img.avatar {
     width: 1150px;
 }
 
+.all-score-container{
+    text-align: center;
+}
+
 span.psw {
     float: right;
     padding-top: 16px;
