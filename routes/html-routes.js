@@ -19,7 +19,7 @@ module.exports = function (app) {
   })
 
   app.get("/pog", function(req, res){
-    res.sendFile(path.join(__dirname+ "./../public/PogPage/view.html"))
+    res.sendFile(path.join(__dirname+ "./../public/PogPage/index.html"))
   });
 
   app.get("/rps", function(req, res) {
