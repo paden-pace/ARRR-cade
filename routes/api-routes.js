@@ -83,7 +83,7 @@ module.exports = function (app) {
       db.Player.findOne({
           where:
             {
-                playerName: req.body.currentUser
+                playerName: req.body.currentName
             }
       }).then(function(player){
           console.log(player);
@@ -99,7 +99,7 @@ module.exports = function (app) {
       db.Player.findOne({
           where:
             {
-                playerName: req.body.currentUser
+                playerName: req.body.currentName
             }
       }).then(function(player){
           console.log(player);
@@ -107,9 +107,14 @@ module.exports = function (app) {
             player.updateAttributes({
                   simonHiScore: req.body.simonHiScore
             })
+            // NewSimonFunction(req.body.simonHiScore);
           }  
       })
   })
+
+// var NewSimonFunction = function(newSimonHiScore){
+//     localStorage.setItem('currentSimon', newSimonHiScore);
+// }
 
 
     app.post('/api/cardUpdate', function(req, res){

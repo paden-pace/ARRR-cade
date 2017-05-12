@@ -17,7 +17,13 @@ $('#sendPog').on('click', function(){
     document.location.replace('../../PogPage/index.html')
 })
 // })
-var currentUser = '';
+var currentName = '';
+var currentSimon = '';
+var currentRps = '';
+var currentPog = '';
+var currentCard = '';
+//localStorage.setItem('currentName', currentName);
+
 $("#logIn").on("submit",function(event) {
     event.preventDefault();
     var playerName = $("input.username");
@@ -34,15 +40,47 @@ $("#logIn").on("submit",function(event) {
     if(player.playerName.length > 0 && player.password.length > 0){
             document.getElementById('id01').style.display = 'none';
     }
+    if ("undefined" === typeof c) {
+    console.log("variable is undefined");
+}
     $.post("api/players", player).then(function(x) {
         console.log('x: ', x);
-        currentUser = x[0].playerName;
-        console.log('current user: ',currentUser);
-        $('h5').text("Logged in as: "+ currentUser);
-          localStorage.setItem('currentUser', currentUser);
+
+        currentName = x[0].playerName;
+        console.log('current name: ',currentName);
+        localStorage.setItem('currentName', currentName);
+
+        currentSimon = x[0].simonHiScore;
+        console.log('current simon: ',currentSimon);
+        localStorage.setItem('currentSimon', currentSimon);
+
+        currentPog = x[0].pogNumOfWins;
+        console.log('current pog: ',currentPog);
+        localStorage.setItem('currentPog', currentPog);
+
+        currentCard = x[0].blackJackHiScore;
+        console.log('current card: ',currentCard);
+        localStorage.setItem('currentCard', currentCard);
+
+        currentRps = x[0].rpsNumOfWins;
+        console.log('current rps: ',currentRps);
+        localStorage.setItem('currentRps', currentRps);
+        
+        $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+        $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+        $('.logout-button').attr('onClick', 'logOutFunction();');
     })
+
 })
 
+
+
+if ((localStorage.getItem('currentName')) != ''){
+    document.getElementById('id01').style.display = 'none';
+    $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+    $('.logout-button').attr('onClick', 'logOutFunction();');
+}
 
 function pogClick () {
 		$("#score-pog").addClass("active");
@@ -316,3 +354,21 @@ var cardContainer = $(".card-score-container");
     return newInputRow;
   }
 
+
+var logOutFunction = function () {
+    console.log("Log-Out Clicked!")
+    currentName = '';
+    currentSimon = '';
+    currentRps = '';
+    currentPog = '';
+    currentCard = '';
+    localStorage.setItem('currentName', currentName);
+    localStorage.setItem('currentSimon', currentSimon);
+    localStorage.setItem('currentRps', currentRps);
+    localStorage.setItem('currentPog', currentPog);
+    localStorage.setItem('currentCard', currentCard);
+    $("#main-bar").html("<h4 id='current-name'>You're not currently logged in.</h4>")
+    document.getElementById('id02').style.display = 'none';
+    document.getElementById('id01').style.display = 'block';
+    console.log("Log-Out Clicked #2!")
+};
