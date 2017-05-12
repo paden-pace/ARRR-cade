@@ -90,7 +90,7 @@ $("#logIn").on("submit", function (event) {
 if ((localStorage.getItem('currentName')) != '') {
     document.getElementById('id01').style.display = 'none';
     $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName')) + "</h5>");
-    $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+    $(".mainB").html("<button class='logout-button'>Log-Out</button>");
     displayScores();
 
 }
