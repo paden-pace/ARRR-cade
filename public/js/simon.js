@@ -21,9 +21,7 @@
 // =============================================================================================
 // =============================================================================================
 
-// var simon = [];
-// var level = 0;
-// //var game = true;
+
 var user= [];
 var simon = [];
 var level = 0;
@@ -102,6 +100,53 @@ var gameOver = function(){
     simon = [];
     level = 0;
 }
+
+// -------------------------------------------------------------
+//                   update sequalize 
+// -------------------------------------------------------------
+
+var currentPlayer = {};
+var newScore; 
+
+  function finishEdit(event) {
+    var updatedPlayer;
+      updatedPlayer = {
+        id: $(this)
+          .data("player")
+          .id,
+        text: $(this)
+          .children("input")
+          .val()
+          .trim()
+      };
+      $(this).blur();
+      updatePlayer(updatedPlayer);
+  }
+
+  // This function updates a todo in our database
+  function updatePlayer(player) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/players",
+      data: player
+    })
+    .done(function() {
+      //getBurgers();
+    });
+  }
+
+
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 var playerCheck = function(simon, user, level) {
     console.log("user.length: " + user.length + " vs. simon.length: "+ simon.length)
@@ -229,84 +274,11 @@ var simonTurn = function(simon){
 
 
 
-// var simonTurn = function(simon, level){
-//     addNumber(simon);
-//     console.log("Simon says " + simon);
-//     //for(i=0; i<simon.length; i++){
-//     var i = 0;
-//     var lightUP = setInterval(function(){  
-//         if (i<simon.length){
-//         //for(i=0; i<simon.length; i++){
-//             //var lightUp = function(i){
-//                 //console.log("lightUP functioning.")
-//         console.log("i = " + i);
-//         if(simon[i] == 1){
-//             console.log("lightUP RED functioning.")
-//             $(".red-s-btn").removeClass("dimmed");
-//             window.setTimeout(unlightRed, 1000);
-//             //console.log("lightUP red.")
-//         } else if(simon[i] == 2){
-//             console.log("lightUP YELLOW functioning.")
-//             $(".yellow-s-btn").removeClass("dimmed");
-//             window.setTimeout(unlightYellow, 1000);
-//             //console.log("lightUP yellow.")
-//         } else if(simon[i] == 3){
-//             console.log("lightUP GREEN functioning.")
-//             $(".green-s-btn").removeClass("dimmed");
-//             window.setTimeout(unlightGreen, 1000);
-//             //console.log("lightUP green.")
-//         } else if(simon[i] == 4){
-//             console.log("lightUP BLUE functioning.")
-//             $(".blue-s-btn").removeClass("dimmed");
-//             window.setTimeout(unlightBlue, 1000);
-//             //console.log("lightUP blue.")
-//         }
-
-//         i++;
-//         };
-//     }, 1050);
-//     //make it click able
-//     return;
-// };
-
 $(document).ready(function() {
     console.log("page connected.");
     addClickHandlers();
 
 
-   
-
-    // var unlightRed = function(){
-    //     $(".red-s-btn").addClass("dimmed");
-    //     //console.log("unlight red");
-    // };
-    // var unlightYellow = function(){
-    //     $(".yellow-s-btn").addClass("dimmed");
-    //     //console.log("unlight yellow");
-    // };
-    // var unlightGreen = function(){
-    //     $(".green-s-btn").addClass("dimmed");
-    //     //console.log("unlight green");
-    // };
-    // var unlightBlue = function(){
-    //     $(".blue-s-btn").addClass("dimmed");
-    //     //console.log("unlight blue");
-    // };
-
-
-    
-
-
-
-    // var next = function(simon, level){
-    //     //console.log("Simon says " + simon);
-    //     //while(game == true){
-    //         simonTurn(simon);
-    //         console.log("LEVEL: " + level);
-    //         var userReset = [];
-    //         playerTurn(simon, level, userReset);
-    //     //};
-    // };
 
     $(".next-btn").on("click", function(){
         simonTurn(simon, level);
