@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <h5 class='text-center'></h5>
     <div id="id01" class="modal">
 
         <form id='logIn' class="modal-content animate">
@@ -62,9 +63,12 @@
             </div>
         </form>
     </div>
+
+    <div id=alreadyexists class=modal display='none'>
+        <h2>This username already exists. Try logging in or creating a new user.</h2>
+    </div>
     <h1>Welcome to the arcade!</h1>
     <h2>LeaderBoard</h2>
-
 
     <div class="col-md-12">
         <ul class="nav nav-tabs row">
@@ -115,11 +119,27 @@
             </div>
         </div>
     </div>
-    <h2><button onclick='return res.redirect("/PogPage")' class='buttonz' href='./PogPage/index.html'>PogProwess</button></h2>
 
-    <h2><button class='buttonz'>Rock Paper Scissors</button></h2>
-    <h2><button class='buttonz'>Simon</button></h2>
+
+    <a href="./pog">
+    <h2><button class='buttonz'>PogProwess</button></h2>
+    </a>
+
+    <a href="./rps">
+    <h2><button class='buttonz'>Rock, Paper, Scissors</button></h2>
+    </a>
+
+    <a href="./simon">
+	<h2><button class='buttonz'>Simon</button></h2>
+	</a>
+
+    <a href="./card">
+
+    <h2><button id='sendPog' class='buttonz' href='/PogPage/index.html'>PogProwess</button></h2>
+
     <h2><button class='buttonz'>Black Jack</button></h2>
+    </a>
+
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="./js/view.js"></script>

@@ -39,7 +39,7 @@ module.exports = function (app) {
             }
         }).then(function(results){
             // console.log("results", results.datavalues);
-            console.log("results.password", results.password);
+            // console.log("results.password", results.password);
             console.log("req.body.password", req.body.password);
             if(results[0].password !== req.body.password) {
                 // alert('this username already exists.');
@@ -75,6 +75,23 @@ module.exports = function (app) {
       res.json(results);
     })
   });
+
+
+  app.post('/api/wins', function(req, res){
+      var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
+      console.log(req.body);
+      db.Player.findOne({
+          where:
+            {
+                playerName: req.body.currentUser
+            }
+      }).then(function(player){
+          console.log(player);
+              player.updateAttributes({
+                  pogNumOfWins: player.pogNumOfWins+1
+          })
+      })
+  })
 
     //   // POST route for saving a new todo. We can create a todo using the data on req.body
     //   app.post("/api/burgers", function(req, res) {
