@@ -19,7 +19,7 @@ module.exports = function (app) {
   })
 
   app.get("/pog", function(req, res){
-    res.sendFile(path.join(__dirname+ "./../public/PogPage/view.html"))
+    res.sendFile(path.join(__dirname+ "./../public/html/pog.html"));
   });
 
   app.get("/rps", function(req, res) {
@@ -31,7 +31,7 @@ module.exports = function (app) {
   });
 
   app.get("/card", function(req, res) {
-    res.sendFile(path.join(__dirname + "./../public/html/card.html"));
+    res.sendFile(path.join(__dirname + "./../public/html/blackjack.html"));
   });
 
 
