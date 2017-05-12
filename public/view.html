@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/view.css" />
+    <title>Arcade Sequelize App</title>
+</head>
+
+<body>
+    <h5 class='text-center'></h5>
+    <div id="id01" class="modal">
+
+        <form id='logIn' class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
+                <h2>CREATE A PROFILE</h2>
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" class='username' required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
+
+                <button type="submit" id='createNewPlayer'>Create Profile</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+        <form id="createLogIn" class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <h2>Log In to an existing profile</h2>
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button id='login' type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Don't yet have a profile? <a href="#" id='switchToCreate'>Create a Profile</a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id=alreadyexists class=modal display='none'>
+        <h2>This username already exists. Try logging in or creating a new user.</h2>
+    </div>
+    <h1>Welcome to the arcade!</h1>
+    <h2>LeaderBoard</h2>
+
+    <div class="col-md-12">
+        <ul class="nav nav-tabs row">
+            <li role="presentation" class="active" id="list-pog"><a class="score-tab" id="tab-pog" data-toggle="tab">Pog</a></li>
+
+            <li role="presentation" class="" id="list-rps"><a class="score-tab" id="tab-rps" data-toggle="tab">RPS</a></li>
+
+            <li role="presentation" class="" id="list-simon"><a class="score-tab" id="tab-simon" data-toggle="tab" >Simon</a></li>
+
+            <li role="presentation" class="" id="list-card"><a class="score-tab" id="tab-card" data-toggle="tab">Black Jack</a></li>
+        </ul>
+        <div class="tab-content row">
+            <div class="col-md-12 score-pane tab-pane fade in active" id="score-pog">
+                <div class="row score-name">
+                    <h3>Pogs!</h3>
+                </div>
+                <div> 
+                    <p>Pog score goes here.</p>
+                    <div class="pog-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-rps">
+                <div class="row score-name">
+                    <h3>Rock, Paper, Scissors!</h3>
+                </div>
+                <div> 
+                    <p>Rock, Paper, Scissors score goes here.</p>
+                    <div class="rps-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-simon">
+                <div class="row score-name">
+                    <h3>Simon Says</h3>
+                </div>
+                <div> 
+                    <p>Simon score goes here.</p>
+                    <div class="simon-score-container"></div>
+                </div>
+            </div>
+            <div class="col-md-12 score-pane tab-pane fade" id="score-card">
+                <div class="row score-name">
+                    <h3>Black Jack</h3>
+                </div>
+                <div> 
+                    <p>Black Jack score goes here.</p>
+                    <div class="card-score-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="./pog">
+    <h2><button class='buttonz'>PogProwess</button></h2>
+    </a>
+
+    <a href="./rps">
+    <h2><button class='buttonz'>Rock, Paper, Scissors</button></h2>
+    </a>
+
+    <a href="./simon">
+	<h2><button class='buttonz'>Simon</button></h2>
+	</a>
+
+    <a href="./card">
+
+    <h2><button id='sendPog' class='buttonz' href='/PogPage/index.html'>PogProwess</button></h2>
+
+    <h2><button class='buttonz'>Black Jack</button></h2>
+    </a>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="./js/view.js"></script>
+
+
+    <a class="apiOption" href="./api/players">
+        <p>API Players List</p>
+    </a>
+</body>
+
+</html>
