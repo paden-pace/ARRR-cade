@@ -1,13 +1,3 @@
-//redo RPS actions as objects
-// ex.
-// action: [{image: link, value: RPS}]
-
-//TO DO
-// Only show text on action used by AI
-// User click show text somewhere?
-// improve jumbotron style
-// improve stat display style
-
 var rps = {
     //player stats
     player: {
@@ -84,17 +74,17 @@ var rps = {
     updateDisplay: function(player, comp) {
         var img = $(".thumbnail img");
         var img2 = $(".rps-text img");
-        var text = "../assets/###-text.png";
-        var image = "../assets/###.png"
+        var text = "../assets/img/###-text.png";
+        var image = "../assets/img/###.png"
 
         if (player < 0) {
-            img2.attr("src", text.replace("###", "ready"));
+            img.attr("src", text.replace("###", "ready"));
         } else {
-            var array = ["rock", "paper", "scissors"];
+            var array = ["anchor", "parrot", "sword"];
 
             img.attr("src", image.replace("###", array[comp - 1]));
 
-            img2.attr("src", text.replace("###", array[comp - 1]));
+            // img2.attr("src", text.replace("###", array[comp - 1]));
         }
     },
     //decide if game ends
@@ -107,11 +97,15 @@ var rps = {
             //return win to database
             //return to main page
             $(".result").html("You win! Game over!");
+            $.post("/api/rpswins", {currentUser: localStorage.getItem("currentUser")});
+            
+            rps.initialize();
         } else if (comp == 3) {
             console.log("You lose");
             //display snarky message
             //return to main page
             $(".result").html("You lose! Game over!");
+            rps.initialize();
         } else {
             //next round
         }
@@ -125,6 +119,7 @@ var rps = {
         $(".result").html(result);
     }
 };
+
 
 rps.initialize();
 
