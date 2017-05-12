@@ -13,8 +13,9 @@ $('#switchToCreate').on('click', function () {
 //     $.post("/api/players", player, function())
 // })
 
-// $('#login').on('click', function(){
-
+$('#sendPog').on('click', function(){
+    document.location.replace('../../PogPage/index.html')
+})
 // })
 var currentUser = '';
 $("#logIn").on("submit",function(event) {
@@ -38,6 +39,7 @@ $("#logIn").on("submit",function(event) {
         currentUser = x[0].playerName;
         console.log('current user: ',currentUser);
         $('h5').text("Logged in as: "+ currentUser);
+          localStorage.setItem('currentUser', currentUser);
     })
 })
 

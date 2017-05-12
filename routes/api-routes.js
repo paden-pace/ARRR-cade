@@ -76,6 +76,23 @@ module.exports = function (app) {
     })
   });
 
+
+  app.post('/api/wins', function(req, res){
+      var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
+      console.log(req.body);
+      db.Player.findOne({
+          where:
+            {
+                playerName: req.body.currentUser
+            }
+      }).then(function(player){
+          console.log(player);
+              player.updateAttributes({
+                  pogNumOfWins: player.pogNumOfWins+1
+          })
+      })
+  })
+
     //   // POST route for saving a new todo. We can create a todo using the data on req.body
     //   app.post("/api/burgers", function(req, res) {
     // // Add a Sequelize create method to the POST route 
