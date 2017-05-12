@@ -278,6 +278,8 @@ $(document).ready(function() {
 
     $(".start-btn").on("click", function(){
         console.log("Game started.");
+        level = 0;
+        simon = [];
         $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
         checker = true;
         simonTurn(simon, level);

@@ -132,7 +132,8 @@ module.exports = function (app) {
                   simonHiScore: req.body.simonHiScore
             })
           }  
-      })
+      });
+
   })
 
 //   {
