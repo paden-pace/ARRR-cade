@@ -38,12 +38,14 @@ module.exports = function (app) {
                 password: req.body.password
             }
         }).then(function(results){
-            // console.log("results", results.datavalues);
+            console.log("results", results);
             // console.log("results.password", results.password);
             console.log("req.body.password", req.body.password);
-            if(results[0].password !== req.body.password) {
+            if(!results[0].playerName){
+                res.send('this username does not exist. please create a user before logging in');
+            }else if(results[0].password !== req.body.password) {
                 // alert('this username already exists.');
-                res.redirect('/');
+                res.send('this password is not correct');
                 // res.json(results);
             } else {
                 res.json(results);
