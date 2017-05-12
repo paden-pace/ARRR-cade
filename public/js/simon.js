@@ -122,7 +122,9 @@ var gameOver = function(level){
         $.post('/api/simonUpdate', data);
         if (score > (localStorage.getItem('currentSimon'))){
             localStorage.setItem('currentSimon', score);
+            $("#current-score").html("Current Simon High Score: " + score);
         }
+        //$("#current-score").html("Current Simon High Score: " + score);
     }
 
 
