@@ -22,12 +22,15 @@
 // =============================================================================================
 
 
+
+
 var user= [];
 var simon = [];
 var level = 0;
 var clickable = true;
 var checker = true;
-var currentTitle = localStorage.getItem('currentUser');
+var currentName = localStorage.getItem('currentName');
+var currentScore = localStorage.getItem('currentSimon');
 
 
 
@@ -108,16 +111,21 @@ var gameOver = function(level){
 //                   update sequalize 
 // -------------------------------------------------------------
 
-var currentPlayer = {};
-var newScore; 
+//var currentPlayer = {};
+//var newScore; 
 
-  function updateScore(score) {
-      var data = {
-        currentUser: localStorage.getItem('currentUser'),
-        simonHiScore: score
+    function updateScore(score) {
+        var data = {
+            currentName: localStorage.getItem('currentName'),
+            simonHiScore: score
         }
-    $.post('/api/simonUpdate', data);
-  }
+        $.post('/api/simonUpdate', data);
+        if (score > (localStorage.getItem('currentSimon'))){
+            localStorage.setItem('currentSimon', score);
+            $("#current-score").html("Current Simon High Score: " + score);
+        }
+        //$("#current-score").html("Current Simon High Score: " + score);
+    }
 
 
 // -------------------------------------------------------------
@@ -275,6 +283,8 @@ $(document).ready(function() {
         simonTurn(simon, level);
     });
 
-    $("#current-title").html("Currently logged in as: " + currentTitle);
+
+    $("#current-name").html("Logged in as: " + currentName);
+    $("#current-score").html("Current Simon High Score: " + currentScore);
     
 });

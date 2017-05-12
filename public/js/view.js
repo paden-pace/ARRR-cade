@@ -17,7 +17,13 @@ $('#sendPog').on('click', function(){
     document.location.replace('../../PogPage/index.html')
 })
 // })
-var currentUser = '';
+var currentName = '';
+var currentSimon = '';
+var currentRps = '';
+var currentPog = '';
+var currentCard = '';
+//localStorage.setItem('currentName', currentName);
+
 $("#logIn").on("submit",function(event) {
     event.preventDefault();
     var playerName = $("input.username");
@@ -34,15 +40,47 @@ $("#logIn").on("submit",function(event) {
     if(player.playerName.length > 0 && player.password.length > 0){
             document.getElementById('id01').style.display = 'none';
     }
+    if ("undefined" === typeof c) {
+    console.log("variable is undefined");
+}
     $.post("api/players", player).then(function(x) {
         console.log('x: ', x);
-        currentUser = x[0].playerName;
-        console.log('current user: ',currentUser);
-        $('h5').text("Logged in as: "+ currentUser);
-          localStorage.setItem('currentUser', currentUser);
+
+        currentName = x[0].playerName;
+        console.log('current name: ',currentName);
+        localStorage.setItem('currentName', currentName);
+
+        currentSimon = x[0].simonHiScore;
+        console.log('current simon: ',currentSimon);
+        localStorage.setItem('currentSimon', currentSimon);
+
+        currentPog = x[0].pogNumOfWins;
+        console.log('current pog: ',currentPog);
+        localStorage.setItem('currentPog', currentPog);
+
+        currentCard = x[0].blackJackHiScore;
+        console.log('current card: ',currentCard);
+        localStorage.setItem('currentCard', currentCard);
+
+        currentRps = x[0].rpsNumOfWins;
+        console.log('current rps: ',currentRps);
+        localStorage.setItem('currentRps', currentRps);
+
+        $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+        $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+        $('.logout-button').attr('onClick', 'logOutFunction();');
     })
+
 })
 
+
+
+if ((localStorage.getItem('currentName')) != ''){
+    document.getElementById('id01').style.display = 'none';
+    $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
+    $('.logout-button').attr('onClick', 'logOutFunction();');
+}
 
 function pogClick () {
 		$("#score-pog").addClass("active");
@@ -133,10 +171,10 @@ var pogContainer = $(".pog-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (pogScores[i]){
-            rowsToAdd.push(createNewPogRow(pogScores[i]));
+            rowsToAdd.push(createNewPogRow(i, pogScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             pogContainer.prepend(rowsToAdd[i]);
         };
@@ -155,11 +193,12 @@ var pogContainer = $(".pog-score-container");
     });
   }
 
-  function createNewPogRow(score) {
+  function createNewPogRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.pogNumOfWins);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.pogNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -183,10 +222,10 @@ var rpsContainer = $(".rps-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (rpsScores[i]){
-            rowsToAdd.push(createNewRpsRow(rpsScores[i]));
+            rowsToAdd.push(createNewRpsRow(i, rpsScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             rpsContainer.prepend(rowsToAdd[i]);
         };
@@ -205,11 +244,12 @@ var rpsContainer = $(".rps-score-container");
     });
   }
 
-  function createNewRpsRow(score) {
+  function createNewRpsRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.rpsNumOfWins);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.rpsNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -233,10 +273,10 @@ var simonContainer = $(".simon-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (simonScores[i]){
-            rowsToAdd.push(createNewSimonRow(simonScores[i]));
+            rowsToAdd.push(createNewSimonRow(i, simonScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             simonContainer.prepend(rowsToAdd[i]);
         };
@@ -255,11 +295,12 @@ var simonContainer = $(".simon-score-container");
     });
   }
 
-  function createNewSimonRow(score) {
+  function createNewSimonRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.simonHiScore);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.simonHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -283,10 +324,10 @@ var cardContainer = $(".card-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (cardScores[i]){
-            rowsToAdd.push(createNewCardRow(cardScores[i]));
+            rowsToAdd.push(createNewCardRow(i, cardScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             cardContainer.prepend(rowsToAdd[i]);
         };
@@ -305,14 +346,33 @@ var cardContainer = $(".card-score-container");
     });
   }
 
-  function createNewCardRow(score) {
+  function createNewCardRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.blackJackHiScore);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.blackJackHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
     return newInputRow;
   }
 
+
+var logOutFunction = function () {
+    console.log("Log-Out Clicked!")
+    currentName = '';
+    currentSimon = '';
+    currentRps = '';
+    currentPog = '';
+    currentCard = '';
+    localStorage.setItem('currentName', currentName);
+    localStorage.setItem('currentSimon', currentSimon);
+    localStorage.setItem('currentRps', currentRps);
+    localStorage.setItem('currentPog', currentPog);
+    localStorage.setItem('currentCard', currentCard);
+    $("#main-bar").html("<h4 id='current-name'>You're not currently logged in.</h4>")
+    document.getElementById('id02').style.display = 'none';
+    document.getElementById('id01').style.display = 'block';
+    console.log("Log-Out Clicked #2!")
+};

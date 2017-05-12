@@ -69,5 +69,5 @@ function win() {
 	goal = Math.floor(Math.random() * 100 + 19);
 	$('.randonum').html('TARGET POG-SCORE: <br>' + goal);
 	init();
-	$.post('/api/wins', {currentUser: localStorage.getItem('currentUser')});
+	$.post('/api/wins', {currentName: localStorage.getItem('currentName')});
 }
