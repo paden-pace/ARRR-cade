@@ -1,0 +1,26 @@
+body {
+	font-family: "PiratesBay", sans-serif;
+}
+
+.btn-default:hover {
+	background-color: yellow;
+}
+
+.thumbnail {
+	position: relative;
+	display: block;
+	border: none;
+}
+
+.rps-text {
+	position: absolute;
+	z-index: 999;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@font-face {
+	font-family: "PiratesBay";
+	src: url("PiratesBay.ttf");
+}
