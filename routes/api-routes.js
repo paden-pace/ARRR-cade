@@ -93,6 +93,48 @@ module.exports = function (app) {
       })
   })
 
+  app.post('/api/simonUpdate', function(req, res){
+      //var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
+      console.log(req.body);
+      db.Player.findOne({
+          where:
+            {
+                playerName: req.body.currentUser
+            }
+      }).then(function(player){
+          console.log(player);
+          if (player.simonHiScore < req.body.simonHiScore) {
+            player.updateAttributes({
+                  simonHiScore: req.body.simonHiScore
+            })
+          }  
+      })
+  })
+
+
+    app.post('/api/cardUpdate', function(req, res){
+      //var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
+      console.log(req.body);
+      db.Player.findOne({
+          where:
+            {
+                playerName: req.body.currentUser
+            }
+      }).then(function(player){
+          console.log(player);
+          if (player.simonHiScore < req.body.simonHiScore) {
+            player.updateAttributes({
+                  simonHiScore: req.body.simonHiScore
+            })
+          }  
+      })
+  })
+
+//   {
+//       currentUser: "bob",
+//       simonHiScore: 1000
+//   }
+
     //   // POST route for saving a new todo. We can create a todo using the data on req.body
     //   app.post("/api/burgers", function(req, res) {
     // // Add a Sequelize create method to the POST route 

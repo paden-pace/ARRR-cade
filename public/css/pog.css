@@ -1,0 +1,67 @@
+.container {
+	background-image: url('../images/asanoha-400px.png');
+	background-repeat: repeat;
+	background-position: center center;
+	min-width: 100%;
+	color: white;
+	width: auto;
+	width: 1148px;
+}
+
+.box {
+	border-color: white;
+	border-style: solid;
+	border-width: 4px;
+	margin-left: 7px;
+	margin-right: 5px;
+	background-color: teal;
+	font-size: 18px;
+	border-radius: 10px;
+}
+
+.samewidth {
+	width: 49%;
+	padding: 16px;
+}
+
+.T {
+	padding: 6px;
+	margin: 13px;
+}
+
+h1 {
+	font-family: impact;
+	font-size: 93px;
+	color: lightcoral;
+	text-shadow: 0 0 6px teal;
+}
+
+.pogpics {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.reset {
+	margin-top: 10px;
+	background-color: gray;
+	color: white;
+	border-style: solid;
+	border-color: darkgray;
+	margin-bottom: 30px;
+	border-radius: 25px;
+}
+
+.nudge {
+	margin-left: 12px;
+}
+
+.a {
+	float: left;
+	top: 22px;
+	padding-left: 23px;
+	padding-right: 23px;
+}
+
+.b {
+	float: right;
+}

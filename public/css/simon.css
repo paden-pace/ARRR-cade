@@ -35,6 +35,11 @@
     background-color: blue;
 }
 
+.main-bar-btn{
+    text-align: right;
+    display: block;
+}
+
 .dimmed {
     opacity: .5;
 }

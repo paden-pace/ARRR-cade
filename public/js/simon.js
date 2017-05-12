@@ -27,6 +27,8 @@ var simon = [];
 var level = 0;
 var clickable = true;
 var checker = true;
+var currentTitle = localStorage.getItem('currentUser');
+
 
 
 var addClickHandlers = function(){
@@ -66,7 +68,7 @@ var addClickHandlers = function(){
                     if(k == simon.length){
 
                         if (checker == false){
-                            gameOver();
+                            gameOver(level);
                         } else {
                             level++;
                             $(".score-div").html("<h3 class:'score'>Score: " + level + "</h3>");
@@ -82,7 +84,7 @@ var addClickHandlers = function(){
                 };
                 
             } else {
-                gameOver();
+                gameOver(level);
                 return;
             };
         });
@@ -91,10 +93,11 @@ var addClickHandlers = function(){
     }
 }; 
 
-var gameOver = function(){
+var gameOver = function(level){
     console.log("Checker:" + checker)
     alert("You lose, and your final score is: " + level);
     //SUBMIT THE INFORMATION TO DATABASE...
+    updateScore(level);
     clickable = false;
     user= [];
     simon = [];
@@ -108,31 +111,12 @@ var gameOver = function(){
 var currentPlayer = {};
 var newScore; 
 
-  function finishEdit(event) {
-    var updatedPlayer;
-      updatedPlayer = {
-        id: $(this)
-          .data("player")
-          .id,
-        text: $(this)
-          .children("input")
-          .val()
-          .trim()
-      };
-      $(this).blur();
-      updatePlayer(updatedPlayer);
-  }
-
-  // This function updates a todo in our database
-  function updatePlayer(player) {
-    $.ajax({
-      method: "PUT",
-      url: "/api/players",
-      data: player
-    })
-    .done(function() {
-      //getBurgers();
-    });
+  function updateScore(score) {
+      var data = {
+        currentUser: localStorage.getItem('currentUser'),
+        simonHiScore: score
+        }
+    $.post('/api/simonUpdate', data);
   }
 
 
@@ -290,6 +274,7 @@ $(document).ready(function() {
         checker = true;
         simonTurn(simon, level);
     });
-    
 
+    $("#current-title").html("Currently logged in as: " + currentTitle);
+    
 });

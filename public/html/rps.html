@@ -9,13 +9,41 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	
 
-	<title>Rock Paper Scissors</title>
+	<title>Anchor Parrot Sword</title>
 </head>
 <body>
 	<div class="container">
+
 		<div class="jumbotron">
-			<h1>Rock Paper Scissors</h1>
+		<a href="./">
+       <button type="button" class="btn btn-default"><span  class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+       </a>
+			<h1>Anchor Parrot Sword</h1>
 			<p>First to 3 wins the game!</p>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12" id="computer-side">
+				<div class="panel panel-default">
+					<div class="panel-heading">BIG BAD AI</div>
+					<div class="panel-body text-center">
+						<div class="col-md-4">
+						<!-- empty -->
+						</div>
+						<div class="col-md-4">
+							<div class="thumbnail comp-play">
+								<img src="">
+								<span class="rps-text">
+									<img src="">
+								</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+						<!-- empty -->
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="row">
@@ -28,38 +56,21 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="col-lg-12" id="computer-side">
-				<div class="panel panel-default">
-					<div class="panel-heading">BIG BAD AI</div>
-					<div class="panel body text-center">
-						<div class="col-md-4">
-							<button class="btn btn-default" id="comp-rock" data-value="1">R</button>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-default" id="comp-paper" data-value="2">P</button>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-default" id="comp-scissors" data-value="3">S</button>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-lg-12" id="player-side">
 				<div class="panel panel-default">
 					<div class="panel-heading">You</div>
-					<div class="panel body text-center">
+					<div class="panel-body text-center">
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-rock" data-value="1">R</button>
+							<button class="btn btn-default player player-1" id="player-rock" data-value="1"><img src="../assets/img/anchor.png"></button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-paper" data-value="2">P</button>
+							<button class="btn btn-default player player-2" id="player-paper" data-value="2"><img src="../assets/img/parrot.png"></button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-scissors" data-value="3">S</button>
+							<button class="btn btn-default player player-3" id="player-scissors" data-value="3"><img src="../assets/img/sword.png"></button>
 						</div>
 					</div>
 				</div>
