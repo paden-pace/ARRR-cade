@@ -15,7 +15,11 @@
 </head>
 <body>
 	<div class="container">
+
 		<div class="jumbotron">
+		<a href="./">
+       <button type="button" class="btn btn-default"><span  class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+       </a>
 			<h1>Rock Paper Scissors</h1>
 			<p>First to 3 wins the game!</p>
 		</div>
@@ -26,19 +30,18 @@
 					<div class="panel-heading">BIG BAD AI</div>
 					<div class="panel-body text-center">
 						<div class="col-md-4">
-							<div class="thumbnail">
-								<img src="../assets/rock.png"><img src="../assets/rock-text.png" class="rps-text">
+						<!-- empty -->
+						</div>
+						<div class="col-md-4">
+							<div class="thumbnail comp-play">
+								<img src="">
+								<span class="rps-text">
+									<img src="">
+								</span>
 							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="thumbnail">
-								<img src="../assets/paper.png">
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="thumbnail">
-								<img src="../assets/scissors.png">
-							</div>
+						<!-- empty -->
 						</div>
 					</div>
 				</div>
@@ -63,13 +66,13 @@
 					<div class="panel-heading">You</div>
 					<div class="panel-body text-center">
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-rock" data-value="1"><img src="../assets/rock.png"></button>
+							<button class="btn btn-default player player-1" id="player-rock" data-value="1"><img src="../assets/rock.png"></button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-paper" data-value="2"><img src="../assets/paper.png"></button>
+							<button class="btn btn-default player player-2" id="player-paper" data-value="2"><img src="../assets/paper.png"></button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-default player" id="player-scissors" data-value="3"><img src="../assets/scissors.png"></button>
+							<button class="btn btn-default player player-3" id="player-scissors" data-value="3"><img src="../assets/scissors.png"></button>
 						</div>
 					</div>
 				</div>
