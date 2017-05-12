@@ -52,6 +52,7 @@ img.avatar {
 
 .container {
     padding: 16px;
+    width: 1150px;
 }
 
 span.psw {
@@ -137,4 +138,8 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+}
+
+#uzername{
+    padding-left: 15px;
 }
