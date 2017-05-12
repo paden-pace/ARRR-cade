@@ -65,7 +65,7 @@ $("#logIn").on("submit",function(event) {
         currentRps = x[0].rpsNumOfWins;
         console.log('current rps: ',currentRps);
         localStorage.setItem('currentRps', currentRps);
-        
+
         $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
         $("#main-bar").append("<button class='logout-button'>Log-Out</button>");
         $('.logout-button').attr('onClick', 'logOutFunction();');
@@ -171,10 +171,10 @@ var pogContainer = $(".pog-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (pogScores[i]){
-            rowsToAdd.push(createNewPogRow(pogScores[i]));
+            rowsToAdd.push(createNewPogRow(i, pogScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             pogContainer.prepend(rowsToAdd[i]);
         };
@@ -193,11 +193,12 @@ var pogContainer = $(".pog-score-container");
     });
   }
 
-  function createNewPogRow(score) {
+  function createNewPogRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.pogNumOfWins);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.pogNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -221,10 +222,10 @@ var rpsContainer = $(".rps-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (rpsScores[i]){
-            rowsToAdd.push(createNewRpsRow(rpsScores[i]));
+            rowsToAdd.push(createNewRpsRow(i, rpsScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             rpsContainer.prepend(rowsToAdd[i]);
         };
@@ -243,11 +244,12 @@ var rpsContainer = $(".rps-score-container");
     });
   }
 
-  function createNewRpsRow(score) {
+  function createNewRpsRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.rpsNumOfWins);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.rpsNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -271,10 +273,10 @@ var simonContainer = $(".simon-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (simonScores[i]){
-            rowsToAdd.push(createNewSimonRow(simonScores[i]));
+            rowsToAdd.push(createNewSimonRow(i, simonScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             simonContainer.prepend(rowsToAdd[i]);
         };
@@ -293,11 +295,12 @@ var simonContainer = $(".simon-score-container");
     });
   }
 
-  function createNewSimonRow(score) {
+  function createNewSimonRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.simonHiScore);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.simonHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
@@ -321,10 +324,10 @@ var cardContainer = $(".card-score-container");
     var rowsToAdd = [];
     for (var i = 0; i <= 10; i++) {
         if (cardScores[i]){
-            rowsToAdd.push(createNewCardRow(cardScores[i]));
+            rowsToAdd.push(createNewCardRow(i, cardScores[i]));
         };
     };
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]){
             cardContainer.prepend(rowsToAdd[i]);
         };
@@ -343,11 +346,12 @@ var cardContainer = $(".card-score-container");
     });
   }
 
-  function createNewCardRow(score) {
+  function createNewCardRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    newScoreSpan.text("Player: " + score.playerName + " - Score: " + score.blackJackHiScore);
+    var number = 10-i;
+    newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.blackJackHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
 
