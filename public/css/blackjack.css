@@ -1,14 +1,20 @@
 /*base*/
 html {
-	font-family: 'Cardo', serif;
+	font-family: 'Della Respira', serif;
+}
+
+body{
+	background-color: #bb2f14;
+	font-family: 'Della Respira', serif;
 }
 /*details*/
 .game {
 	width: 400px;
 	margin: 0 auto;
 	padding: 20px;
-	border: 1px solid #E0E0E0;
+	border: 3px solid #000000;
 	text-align: center;
+	background-color: #ffffff;
 }
 .cards {
 	height: 350px;
@@ -26,5 +32,19 @@ html {
 }
 	.controls__btn {
 		display: none;
-		font-family: 'Cardo', serif;
+		font-family: 'Della Respira', serif;
 	}
+
+
+.main-bar-btn{
+    display: block;
+	text-align: left;
+}
+.main-bar{
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px auto 40px auto;
+    border-bottom: solid 2px #ffffff;
+	margin-bottom: 20px;
+}

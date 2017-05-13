@@ -1,4 +1,8 @@
 // card deck API urls
+var currentName = localStorage.getItem('currentName');
+var currentScore = localStorage.getItem('currentSimon');
+$("#current-name").html("Logged in as: " + currentName);
+$("#current-score").html("Current High Score: " + currentScore);
 
 var guess = 3;
 var level = 0;
