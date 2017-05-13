@@ -8,8 +8,7 @@
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Della+Respira" rel="stylesheet">
     <!-- Bootstrap Link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/view.css" />
     <title>Arcade Sequelize App</title>
 </head>
@@ -24,62 +23,62 @@
         <div class="col-md-6 main-bar-right">
         </div>
     </div>
-        <div id="id01" class="modal">
-            <form id='logIn' class="modal-content animate">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
-                    <h2>Create a Profile</h2>
+    <div id="id01" class="modal">
+        <form id='logIn' class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
+                <h2>Create a Profile</h2>
                     <h4>OR</h4>
                     <h2>Log In to your Existing Account</h2>
-                </div>
+            </div>
 
-                <div class="container" id='toobig'>
-                    <label class='row' id='uzername'><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" class='username' required>
+            <div class="container" id='toobig'>
+                <label class='row' id='uzername'><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" class='username' required>
 
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
 
-                    <button type="submit" id='createNewPlayer'>Create Profile</button>
-                    <input type="checkbox" checked="checked"> Remember me
-                </div>
+                <button type="submit" id='createNewPlayer'>Create Profile</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
 
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <!--<span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>-->
-                </div>
-            </form>
-        </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <!--<span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>-->
+            </div>
+        </form>
+    </div>
 
-        <div id="id02" class="modal">
-            <form id="createLogIn" class="modal-content animate">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                    <h2>Log In to an existing profile</h2>
-                </div>
+    <div id="id02" class="modal">
+        <form id="createLogIn" class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <h2>Log In to an existing profile</h2>
+            </div>
 
-                <div class="container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
 
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
 
-                    <button id='login' type="submit">Login</button>
-                    <input type="checkbox" checked="checked"> Remember me
-                </div>
+                <button id='login' type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
 
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw">Don't yet have a profile? <a href="#" id='switchToCreate'>Create a Profile</a></span>
-                </div>
-            </form>
-        </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Don't yet have a profile? <a href="#" id='switchToCreate'>Create a Profile</a></span>
+            </div>
+        </form>
+    </div>
 
-        <div id=alreadyexists class=modal display='none'>
-            <h2>This username already exists. Try logging in or creating a new user.</h2>
-        </div>         
-                  
+    <div id=alreadyexists class=modal display='none'>
+        <h2>This username already exists. Try logging in or creating a new user.</h2>
+    </div>
+
     <div class="row welcome-row">
         <h1>Welcome aboard the 'ARRR'-cade!</h1>
         <p>Avast! Now that ye landlubbers are aboard the 'ARRR'-cade!</p>

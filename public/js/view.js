@@ -110,12 +110,10 @@ if ((localStorage.getItem('currentName')) != '') {
 
 function displayScores() {
     $('.logout-button').attr('onClick', 'logOutFunction();');
-
     $(".pog-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentPog'))+ "</h5>");
     $(".rps-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentRps'))+ "</h5>");
     $(".simon-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentSimon'))+ "</h5>");
     $(".card-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentCard'))+ "</h5>");
-
 };
 
 function pogClick() {
