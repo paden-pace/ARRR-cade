@@ -25,7 +25,7 @@ var currentCard = '';
 //localStorage.setItem('currentName', currentName);
 
 $("#logIn").on("submit", function (event) {
-    event.preventDefault();
+    //event.preventDefault();
     var playerName = $("input.username");
     var password = $("input.pword");
     var player = {
@@ -39,6 +39,10 @@ $("#logIn").on("submit", function (event) {
     console.log(player);
     if (player.playerName.length > 0 && player.password.length > 0) {
         document.getElementById('id01').style.display = 'none';
+        $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + player.playerName+ "</h5>");
+        $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
+        $('.logout-button').attr('onClick', 'logOutFunction();');
+   
     }
     if ("undefined" === typeof c) {
         console.log("variable is undefined");
@@ -77,10 +81,12 @@ $("#logIn").on("submit", function (event) {
             console.log('current rps: ', currentRps);
             localStorage.setItem('currentRps', currentRps);
 
+            
             $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
             $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
             $('.logout-button').attr('onClick', 'logOutFunction();');
             displayScores();
+            console.log("should update the main-bar")
         }
 
     })
@@ -90,10 +96,10 @@ $("#logIn").on("submit", function (event) {
     displayScores();
 
 })
-$("#createNewPlayer").on("submit",function(event) {
+$("#createNewPlayer").on("click",function(event) {
     $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
     $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
-    $('.logout-button').attr('onClick', 'logOutFunction();');
+    //$('.logout-button').attr('onClick', 'logOutFunction();');
     displayScores();
 });
 
@@ -109,11 +115,14 @@ if ((localStorage.getItem('currentName')) != '') {
 }
 
 function displayScores() {
-    $('.logout-button').attr('onClick', 'logOutFunction();');
+    
     $(".pog-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentPog'))+ "</h5>");
     $(".rps-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentRps'))+ "</h5>");
     $(".simon-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentSimon'))+ "</h5>");
     $(".card-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentCard'))+ "</h5>");
+    $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
+    $('.logout-button').attr('onClick', 'logOutFunction();');
 };
 
 function pogClick() {
@@ -213,7 +222,7 @@ function initializePogRows() {
     };
     for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]) {
-            pogContainer.prepend(rowsToAdd[i]);
+            pogContainer.append(rowsToAdd[i]);
         };
     };
 };
@@ -223,7 +232,7 @@ function getPogScores() {
     $.get("/api/players", function (data) {
         console.log("Scores", data);
         data.sort(function (a, b) {
-            return a.pogNumOfWins < b.pogNumOfWins ? -1 : 1;
+            return a.pogNumOfWins > b.pogNumOfWins ? -1 : 1;
         });
         pogScores = data;
         initializePogRows();
@@ -234,7 +243,7 @@ function createNewPogRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    var number = 10 - i;
+    var number = i+1;
     newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.pogNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
@@ -264,7 +273,7 @@ function initializeRpsRows() {
     };
     for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]) {
-            rpsContainer.prepend(rowsToAdd[i]);
+            rpsContainer.append(rowsToAdd[i]);
         };
     };
 };
@@ -274,7 +283,7 @@ function getRpsScores() {
     $.get("/api/players", function (data) {
         console.log("Scores", data);
         data.sort(function (a, b) {
-            return a.rpsNumOfWins < b.rpsNumOfWins ? -1 : 1;
+            return a.rpsNumOfWins > b.rpsNumOfWins ? -1 : 1;
         });
         rpsScores = data;
         initializeRpsRows();
@@ -285,7 +294,7 @@ function createNewRpsRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    var number = 10 - i;
+    var number = i+1;
     newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.rpsNumOfWins);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
@@ -315,7 +324,7 @@ function initializeSimonRows() {
     };
     for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]) {
-            simonContainer.prepend(rowsToAdd[i]);
+            simonContainer.append(rowsToAdd[i]);
         };
     };
 };
@@ -325,7 +334,7 @@ function getSimonScores() {
     $.get("/api/players", function (data) {
         console.log("Scores", data);
         data.sort(function (a, b) {
-            return a.simonHiScore < b.simonHiScore ? -1 : 1;
+            return a.simonHiScore > b.simonHiScore ? -1 : 1;
         });
         simonScores = data;
         initializeSimonRows();
@@ -336,7 +345,7 @@ function createNewSimonRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    var number = 10 - i;
+    var number = i+1;
     newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.simonHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
@@ -366,7 +375,7 @@ function initializeCardRows() {
     };
     for (var i = 0; i <= 9; i++) {
         if (rowsToAdd[i]) {
-            cardContainer.prepend(rowsToAdd[i]);
+            cardContainer.append(rowsToAdd[i]);
         };
     };
 };
@@ -376,7 +385,7 @@ function getCardScores() {
     $.get("/api/players", function (data) {
         console.log("Scores", data);
         data.sort(function (a, b) {
-            return a.blackJackHiScore < b.blackJackHiScore ? -1 : 1;
+            return a.blackJackHiScore > b.blackJackHiScore ? -1 : 1;
         });
         cardScores = data;
         initializeCardRows();
@@ -387,7 +396,7 @@ function createNewCardRow(i, score) {
     var newInputRow = $("<li>");
     newInputRow.addClass("list-group-item score-item");
     var newScoreSpan = $("<span>");
-    var number = 10 - i;
+    var number = i+1;
     newScoreSpan.text(number + ". Player: " + score.playerName + " - Score: " + score.blackJackHiScore);
     newInputRow.append(newScoreSpan);
     newInputRow.data("score", score);
