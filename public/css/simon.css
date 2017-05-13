@@ -1,45 +1,156 @@
+
+
+
+body{
+    background-image: url(./../img/wood.jpg);
+    background-repeat:no-repeat;
+	background-position: 0 0 0 px;
+	-webkit-background-size:cover;
+	background-attachment: fixed; 
+    font-family: 'Della Respira', serif;
+}
+
+h1{
+    color: #ffffff;
+    font-size: 64px;
+    margin: 30px auto;
+    /*-webkit-text-stroke: 2px #000000;*/
+}
+
+.title-col{
+    text-align: center;
+}
+
 .color-btn {
     height: 100px;
     width: 100px;
+    border: none;
 }
 
 .red-s-btn {
-    background-color: red;
+    background-color: orangered;
 }
 
 .yellow-s-btn {
-    background-color: gold;
+    background-color: #f1ca2f
 }
 
 .green-s-btn {
-    background-color: green;
+    background-color: #4CAF50;
 }
 
 .blue-s-btn {
-    background-color: blue;
+    background-color: #3f8ac5
 }
 
 .red-btn {
-    background-color: red;
+    background-color: orangered;
 }
 
 .yellow-btn {
-    background-color: gold;
+    background-color: #f1ca2f
 }
 
 .green-btn {
-    background-color: green;
+    background-color: #4CAF50;
 }
 
 .blue-btn {
-    background-color: blue;
+    background-color: #3f8ac5
 }
 
 .main-bar-btn{
     text-align: right;
     display: block;
 }
+.main-bar{
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px auto 40px auto;
+    border-bottom: solid 2px #ffffff;
+}
+
+.instructions-row{
+    background-color: rgba(255,255,255,0.7);
+    color: #000000;
+    text-align: center;
+    border: solid 3px #000000;
+    margin: 30px;
+}
+
+p{
+    font-size: 16px;
+}
 
 .dimmed {
     opacity: .5;
+}
+
+.light-col{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    width: inherit;
+}
+
+.panel{
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
+    border: solid 3px white;
+}
+
+.internal-panel{
+    width: 75%;
+    padding: auto;
+    display: block;
+    margin: auto;
+}
+
+.panel-heading{
+    background-color: #000000;
+    color: #ffffff;
+    border-bottom: solid 3px white;
+}
+
+.score-col{
+    text-align: center;
+}
+
+.score-div{
+    background-color: rgba(255,255,255,0.5);
+    border: solid 3px #000000;
+    color: #000000;
+    width: 70%;
+    padding: 20px auto;
+    margin: 20px auto;
+}
+
+.score{
+    margin: auto;
+    padding: 15px;
+}
+
+.score-btn{
+    font-size: 18px;
+    padding: 5px;
+    width: 200px;
+    border: solid 2px #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.instructions-btn{
+    font-size: 18px;
+    padding: 5px;
+    width: 200px;
+    border: solid 2px #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.button-row{
+    margin: 10px;
 }

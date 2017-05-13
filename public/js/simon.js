@@ -121,7 +121,7 @@ function updateScore(score) {
     $.post('/api/simonUpdate', data);
     if (score > (localStorage.getItem('currentSimon'))) {
         localStorage.setItem('currentSimon', score);
-        $("#current-score").html("Current Simon High Score: " + score);
+        $("#current-score").html("Current High Score: " + score);
     }
     //$("#current-score").html("Current Simon High Score: " + score);
 }
@@ -271,6 +271,15 @@ $(document).ready(function () {
 
 
 
+
+$("#instructions-btn").on("click", function(){
+    document.getElementById('instructions-row').style.display = 'none';
+});
+
+$("#show-btn").on("click", function(){
+    document.getElementById('instructions-row').style.display = 'block';
+});
+
     $(".next-btn").on("click", function () {
         simonTurn(simon, level);
     });
@@ -286,6 +295,6 @@ $(document).ready(function () {
 
 
     $("#current-name").html("Logged in as: " + currentName);
-    $("#current-score").html("Current Simon High Score: " + currentScore);
+    $("#current-score").html("Current High Score: " + currentScore);
 
 });
