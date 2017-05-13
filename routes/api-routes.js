@@ -94,6 +94,7 @@ module.exports = function (app) {
   })
 
   app.post('/api/rpswins', function(req, res){
+      console.log('req.body: '+req);
       var updatedPlayer = {"rpsNumOfWins": req.body.rpsNumOfWins+1};
       db.Player.findOne({
           where:
@@ -101,6 +102,7 @@ module.exports = function (app) {
                 playerName: req.body.currentName
             }
       }).then(function(player){
+          console.log('player: '+player);
           player.updateAttributes({
               rpsNumOfWins: player.rpsNumOfWins+1
           })

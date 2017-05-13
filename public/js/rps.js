@@ -98,7 +98,7 @@ var rps = {
             //return to main page
             $(".result").html("You win! Game over!");
             $.post("/api/rpswins", {
-                currentUser: localStorage.getItem("currentUser")
+                currentUser: localStorage.getItem("currentName")
             });
 
             rps.initialize();
