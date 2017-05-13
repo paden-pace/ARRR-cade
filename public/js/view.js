@@ -43,6 +43,7 @@ $("#logIn").on("submit", function (event) {
     if ("undefined" === typeof c) {
         console.log("variable is undefined");
     }
+
     $.post("api/players", player).then(function (x) {
         console.log('x: ', x);
         if (x.response == 'this password is not correct') {
@@ -76,31 +77,45 @@ $("#logIn").on("submit", function (event) {
             console.log('current rps: ', currentRps);
             localStorage.setItem('currentRps', currentRps);
 
-            $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName')) + "</h5>");
-            $(".mainB").html("<button class='logout-button'>Log-Out</button>");
+            $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+            $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
             $('.logout-button').attr('onClick', 'logOutFunction();');
-            displayScores()
+            displayScores();
         }
+
     })
+    $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
+    $('.logout-button').attr('onClick', 'logOutFunction();');
+    displayScores();
 
 })
-
+$("#createNewPlayer").on("submit",function(event) {
+    $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
+    $('.logout-button').attr('onClick', 'logOutFunction();');
+    displayScores();
+});
 
 
 if ((localStorage.getItem('currentName')) != '') {
     document.getElementById('id01').style.display = 'none';
-    $("#main-bar").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName')) + "</h5>");
-    $(".mainB").html("<button class='logout-button'>Log-Out</button>");
+
+    $(".main-bar-left").html("<h5 class='current-name'>Logged in as: " + (localStorage.getItem('currentName'))+ "</h5>");
+    $(".main-bar-right").html("<button class='logout-button'>Log-Out</button>");
+
     displayScores();
 
 }
 
 function displayScores() {
     $('.logout-button').attr('onClick', 'logOutFunction();');
-    $(".pog-score").html("<h5 class='score-text'>Your current Pog Score: " + (localStorage.getItem('currentPog')) + "</h5>");
-    $(".rps-score").html("<h5 class='score-text'>Your current RPS Score: " + (localStorage.getItem('currentRps')) + "</h5>");
-    $(".simon-score").html("<h5 class='score-text'>Your current Simon Score: " + (localStorage.getItem('currentSimon')) + "</h5>");
-    $(".card-score").html("<h5 class='score-text'>Your current Card Score: " + (localStorage.getItem('currentCard')) + "</h5>");
+
+    $(".pog-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentPog'))+ "</h5>");
+    $(".rps-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentRps'))+ "</h5>");
+    $(".simon-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentSimon'))+ "</h5>");
+    $(".card-score").html("<h5 class='score-text'>Current Score: " + (localStorage.getItem('currentCard'))+ "</h5>");
+
 };
 
 function pogClick() {
