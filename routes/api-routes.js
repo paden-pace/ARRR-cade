@@ -9,10 +9,10 @@
 // (remember: connection.js -> orm.js -> route file)
 // var orm = require("../config/orm.js");
 var db = require("../models");
-
 // Routes
 // =============================================================
 module.exports = function (app) {
+
 
     //   // GET route for getting all of the todos
     //   app.get("/api/burgers", function(req, res) {
@@ -128,24 +128,20 @@ module.exports = function (app) {
       })
   })
 
-// var NewSimonFunction = function(newSimonHiScore){
-//     localStorage.setItem('currentSimon', newSimonHiScore);
-// }
 
 
     app.post('/api/cardUpdate', function(req, res){
-      //var updatedPlayer = { "pogNumOfWins": req.body.pogNumOfWins+1 };
       console.log(req.body);
       db.Player.findOne({
           where:
             {
-                playerName: req.body.currentUser
+                playerName: req.body.currentName
             }
       }).then(function(player){
           console.log(player);
-          if (player.simonHiScore < req.body.simonHiScore) {
+          if (player.blackJackHiScore < req.body.blackJackHiScore) {
             player.updateAttributes({
-                  simonHiScore: req.body.simonHiScore
+                  blackJackHiScore: req.body.blackJackHiScore
             })
           }  
       });

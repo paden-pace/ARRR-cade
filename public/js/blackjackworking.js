@@ -15,7 +15,7 @@ var level = 0;
     //game states
     var game = {
         status: '',
-        deckId: "6zf113fp4vgf",
+        deckId: "wumfzqv956sl",
         remaining: '',
         result: '',
         player: '',
@@ -205,27 +205,106 @@ var level = 0;
         alert("You lose, and your final score is: " + level);
         //SUBMIT THE INFORMATION TO DATABASE...
         updateScore(level);
-        player = [];
-        dealer = [];
-        level = 0;
+        variableReset();
     }
 
-    sequelize
+    //sequelize
     function updateScore(score) {
         var data = {
             currentName: localStorage.getItem('currentName'),
             blackJackHiScore: score
         }
         $.post('/api/cardUpdate', data);
-        if (level > (localStorage.getItem('currentblackjack'))) {
-            localStorage.setItem('currentSimon', score);
+        if (score > (localStorage.getItem('currentCard'))) {
+            localStorage.setItem('currentCard', score);
+            //$("#current-score").html("Current High Score: " + score);
         }
     }
-
-
-
 
 
     init();
 
 }());
+
+
+
+var variableReset = function (){
+    guess = 3;
+    level = 0;
+
+    dealer = {
+        deck: '',
+        draw: ''
+    };
+
+    game = {
+        status: '',
+        deckId: "wumfzqv956sl",
+        remaining: '',
+        result: '',
+        player: '',
+        drawn: '',
+    };
+
+    //elements
+    player = $('#player');
+    start = $('#start');
+    lower = $('.lower');
+    higher = $('.higher');
+    state = $('.state');
+    result = $('#result');
+    choice = $('#choice');
+    remain = $('#remain');
+    restart = $('#restart');
+    check = $(".check");
+
+    //cards
+    cards = [{
+        '1': 0
+    }, {
+        '2': 1
+    }, {
+        '3': 2
+    }, {
+        '4': 3
+    }, {
+        '5': 4
+    }, {
+        '6': 5
+    }, {
+        '7': 6
+    }, {
+        '8': 7
+    }, {
+        '9': 8
+    }, {
+        '10': 9
+    }, {
+        'J': 10
+    }, {
+        'Q': 11
+    }, {
+        'K': 12
+    }, {
+        'A': 13
+    }];
+
+    //messages
+    messages = {
+        start: 'Please choose lower or higher!',
+        remaining: 'You have ' + game.remaining + ' cards remaining!',
+        lower: 'You chose Lower!',
+        higher: 'You chose Higher!',
+        win: 'You have won!',
+        correct: 'You are correct!',
+        incorrect: 'You are incorrect, please start again!',
+    };
+
+    //urls
+    deck = "http://deckofcardsapi.com/api/deck/new/shuffle/";
+    card = "http://deckofcardsapi.com/api/deck/" + game.deckId + "/draw/?count=1";
+    shuffle = "http://deckofcardsapi.com/api/deck/" + game.deckId + "/shuffle/";
+
+}
+
+//(dealer, guess, level, game, player, start, lower, higher, state, result, choice, remain, restart, check, cards, messages, deck, card, shuffle)

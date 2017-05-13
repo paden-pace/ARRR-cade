@@ -32,7 +32,7 @@ module.exports = function (app) {
   });
 
   app.get("/card", function(req, res) {
-    res.sendFile(path.join(__dirname + "./../public/html/blackjack.html"));
+    res.sendFile(path.join(__dirname + "./../public/html/blackjackworking.html"));
   });
 
 
