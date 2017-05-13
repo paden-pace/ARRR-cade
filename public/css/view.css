@@ -2,9 +2,14 @@ input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
+    display: block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    color: #000000;
+}
+
+#toobig{
+    width: 100%;
 }
 
 /* Set a style for all buttons */
@@ -38,6 +43,15 @@ button:hover {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
+}
+
+#cancel-container, #createNewPlayer, input[type=text], input[type=password]{
+    width: 100%;
+    display: block;
+}
+
+#createNewPlayer{
+    margin-top: 20px;
 }
 
 /* Center the image and position the close button */
@@ -97,11 +111,19 @@ span.psw {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #000000;
+    color: #ffffff;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    padding: 10px;
 }
+
+.internal-modal{
+    padding: 10px;
+}
+
+
 
 /* The Close Button (x) */
 .close {

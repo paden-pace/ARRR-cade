@@ -24,30 +24,34 @@
         </div>
     </div>
     <div id="id01" class="modal">
-        <form id='logIn' class="modal-content animate">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
-                <h2>Create a Profile</h2>
-                    <h4>OR</h4>
-                    <h2>Log In to your Existing Account</h2>
+        <div class="internal-modal row">
+            <div class="internal-modal col-md-12">
+            <form id='logIn' class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" id='close' title="Close Modal">&times;</span>
+                    <h2>Create a Profile</h2>
+                        <h4>OR</h4>
+                        <h2>Log In to your Existing Account</h2>
+                </div>
+
+                <div class="container" id='toobig'>
+                    <label class='row' id='uzername'><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" class='username' required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
+
+                    <button type="submit" id='createNewPlayer'>Create Profile</button>
+                    <input type="checkbox" checked="checked"> Remember me
+                </div>
+
+                <div class="container" id=" cancel-container" style="background-color:#000000; text-align: center; width: 60%">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <!--<span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>-->
+                </div>
+            </form>
             </div>
-
-            <div class="container" id='toobig'>
-                <label class='row' id='uzername'><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" class='username' required>
-
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" class='pword' required>
-
-                <button type="submit" id='createNewPlayer'>Create Profile</button>
-                <input type="checkbox" checked="checked"> Remember me
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <!--<span class="psw">Profile Already Exists? <a href=# id='switchToLogin'>Log In</a></span>-->
-            </div>
-        </form>
+        </div>
     </div>
 
     <div id="id02" class="modal">
