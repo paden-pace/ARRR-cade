@@ -1,5 +1,5 @@
 .container {
-	background-image: url('../images/asanoha-400px.png');
+	background: url('../assets/img/asanoha-400px.png');
 	background-repeat: repeat;
 	background-position: center center;
 	min-width: 100%;

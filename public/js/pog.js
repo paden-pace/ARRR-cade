@@ -15,7 +15,7 @@ function init() {
 	}
 	for (var i = 0; i < 4; i++) {
 		var img = $('<img class="col-sm-3">');
-		img.attr('src', "/PogPage/assets/images/pog" + (i + 1) + ".png")
+		img.attr('src', "../assets/img/pirate" + (i + 1) + ".png")
 			.attr('id', i + 1)
 			.val(pointvals[i]);
 		$('.pogpics').append(img);
@@ -69,5 +69,7 @@ function win() {
 	goal = Math.floor(Math.random() * 100 + 19);
 	$('.randonum').html('TARGET POG-SCORE: <br>' + goal);
 	init();
-	$.post('/api/wins', {currentName: localStorage.getItem('currentName')});
+	$.post('/api/pogwins', {
+		currentName: localStorage.getItem('currentName')
+	});
 }

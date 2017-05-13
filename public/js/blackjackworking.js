@@ -1,23 +1,7 @@
-// var deck;
-// var player
-// var suitArray = ["hearts", "spades", "clubs", "diamonds"];
-// var cardnumber = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
-// var money = 100;
-// var playerTotal = sum of random card + random card 2
-// var dealerTotal = sum of random card 1 + random card 2
-// function bet is a submit form in html pull value from there. when submited start the game function with dealing to player and dealer
-// deal function should assign 4 cards from Deck arrray randomly
-// reveal 2 player cards and 1 dealer card in html
-// within in game function two button options stand or stay. Hit adds a new random. 
-// if hit function adds a randomcard that causes playerTotal > 21 then bust.
-// if player clicks stand then turn is over.
-// turn over randomcard 2.
-// If dealerTotal <playerTotal add random score until dealerTotal > playerTotal. if dealerTotal > 21 then player wins.
-// ask to bet again\
-
 // card deck API urls
 
-
+var guess = 3;
+var level = 0;
 
 (function () {
     //api data
@@ -25,11 +9,13 @@
         deck: '',
         draw: ''
     };
+    var guess = 3;
+    var level = 0;
 
     //game states
     var game = {
         status: '',
-        deckId: "up74cn0hdop5",
+        deckId: "6zf113fp4vgf",
         remaining: '',
         result: '',
         player: '',
@@ -46,6 +32,7 @@
         choice = $('#choice'),
         remain = $('#remain'),
         restart = $('#restart');
+    check = $(".check");
 
     //cards
     var cards = [{
@@ -102,13 +89,14 @@
             var dealer = {} ? handleData(deck) : handleData(shuffle);
 
             start.hide();
-
+            check.show();
             state.show();
             restart.show();
         });
     }
 
     function handleData(stateUrl) {
+        console.log("check:")
         $.ajax({
             url: stateUrl,
             type: 'GET'
@@ -154,16 +142,21 @@
         player.attr('src', dealer.draw.cards[0].image);
         game.remaining = dealer.draw.remaining;
         remain.text(messages.remaining);
-
+        // console.log("dealercard:" + dealer.cards[0].value); 
+        console.log("game.drawn:" + game.drawn);
+        console.log("guess: " + guess);
         if (game.remaining === 0) {
             game.status = 'WIN';
             result.text(messages.win);
-        } else if (dealer.draw.cards[0].value >= game.drawn && game.player === 'higher' || dealer.draw.cards[0].value <= game.drawn && game.player === 'lower') {
+        } else if (dealer.draw.cards[0].value >= game.drawn && guess === 'higher' || dealer.draw.cards[0].value <= game.drawn && guess === 'lower') {
+            level++
+            console.log("your score is:" + level);
             game.status = 'CORRECT';
             result.text(messages.correct);
             drawCard();
         } else {
             game.status = 'LOSE';
+            gameOver(level);
             result.text(messages.incorrect);
             remain.hide();
             state.hide();
@@ -171,16 +164,25 @@
     }
 
     function drawCard() {
-        state.on('click', function () {
-            var guess = $(this).attr('class').split(' ')[0].toLowerCase();
-
-            game.status = 'SELECTED';
-            choice.text(messages[guess]);
-            game.drawn = dealer.draw.cards[0].value;
-            game.player = guess;
-            handleData(card);
+        higher.on('click', function () {
+            guess = "higher";
+            // handleData(card);
         });
+        lower.on('click', function () {
+            guess = "lower";
+
+        });
+        game.status = 'SELECTED';
+        choice.text(messages[guess]);
+        game.drawn = dealer.draw.cards[0].value;
+        game.player = guess;
+        // handleData(card);
     }
+
+    check.on("click", function () {
+        console.log("check clicked");
+        handleData(card);
+    });
 
     restart.on('click', function () {
         //delete card data
@@ -197,6 +199,32 @@
         //restart the game
         init();
     });
+
+    var gameOver = function (level) {
+
+        alert("You lose, and your final score is: " + level);
+        //SUBMIT THE INFORMATION TO DATABASE...
+        updateScore(level);
+        player = [];
+        dealer = [];
+        level = 0;
+    }
+
+    sequelize
+    function updateScore(score) {
+        var data = {
+            currentName: localStorage.getItem('currentName'),
+            blackJackHiScore: score
+        }
+        $.post('/api/cardUpdate', data);
+        if (level > (localStorage.getItem('currentblackjack'))) {
+            localStorage.setItem('currentSimon', score);
+        }
+    }
+
+
+
+
 
     init();
 
