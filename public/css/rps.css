@@ -1,6 +1,15 @@
-body {
+
+body{
 	font-family: "PiratesBay", sans-serif;
+	width:100%;
+	height:auto;
+	background-image: url(./../img/ship.jpg);
+	background-repeat:no-repeat;
+	background-position: 0 0 0 px;
+	-webkit-background-size:cover;
+	background-attachment: fixed; 
 }
+
 
 .btn-default:hover {
 	background-color: yellow;
@@ -23,4 +32,25 @@ body {
 @font-face {
 	font-family: "PiratesBay";
 	src: url("PiratesBay.ttf");
+}
+
+.main-bar-btn{
+    text-align: right;
+    display: block;
+}
+.main-bar{
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px auto 40px auto;
+    border-bottom: solid 2px #ffffff;
+	margin-bottom: 30px
+}
+
+.panel-default{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.panel-score{
+	background-color: #ffffff;
 }

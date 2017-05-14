@@ -1,4 +1,13 @@
+var currentName = localStorage.getItem('currentName');
+var currentScore = localStorage.getItem('currentRps');
+$("#current-name").html("Logged in as: " + currentName);
+$("#current-score").html("Current High Score: " + currentScore);
+
+
 var rps = {
+
+
+
     //player stats
     player: {
         score: 0,

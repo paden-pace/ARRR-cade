@@ -3,6 +3,10 @@ var totalscore = 0;
 var wins = 0;
 var losses = 0;
 var goal = Math.floor(Math.random() * 100 + 19);
+var currentName = localStorage.getItem('currentName');
+var currentScore = localStorage.getItem('currentPog');
+$("#current-name").html("Logged in as: " + currentName);
+$("#current-score").html("Current High Score: " + currentScore);
 
 function init() {
 	pointvals = [];

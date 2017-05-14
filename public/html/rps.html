@@ -15,12 +15,29 @@
 </head>
 
 <body>
+	<div class="row">
+            <div class='col-lg-12 container'>
+                <div class="row main-bar">
+                    <div class="col-md-4">
+                        <a href="./">
+                            <button type="button" class="btn btn-default main-bar-btn"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</button>
+                        </a>          
+                    </div>
+                    <div class="col-md-4">
+                        <h4 id="current-name">You're not currently logged in.</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 id="current-score"></h4>
+                    </div>
+                </div>
+            </div> 
+        </div>
 	<div class="container">
 
 		<div class="jumbotron">
-			<a href="./">
+			<!--<a href="./">
 				<button type="button" class="btn btn-default"><span  class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-			</a>
+			</a>-->
 			<h1>Anchor Parrot Sword</h1>
 			<p>First to 3 wins the game!</p>
 		</div>
@@ -51,7 +68,7 @@
 
 		<div class="row">
 			<div class="col-lg-12" id="scores">
-				<div class="panel panel-default">
+				<div class="panel panel-default panel-score">
 					<div class="panel-body">
 						<div class="col-md-4 computer-score text-left"></div>
 						<div class="col-md-4 result text-center"></div>
