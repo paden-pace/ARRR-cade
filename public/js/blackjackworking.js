@@ -1,6 +1,6 @@
 // card deck API urls
 var currentName = localStorage.getItem('currentName');
-var currentScore = localStorage.getItem('currentSimon');
+var currentScore = localStorage.getItem('currentCard');
 $("#current-name").html("Logged in as: " + currentName);
 $("#current-score").html("Current High Score: " + currentScore);
 
@@ -19,7 +19,7 @@ var level = 0;
     //game states
     var game = {
         status: '',
-        deckId: "wumfzqv956sl",
+        deckId: "asuty8abnzay",
         remaining: '',
         result: '',
         player: '',
